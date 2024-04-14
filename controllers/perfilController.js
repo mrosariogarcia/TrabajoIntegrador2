@@ -1,15 +1,6 @@
-
-let perfilController = {}
-
-
-
-
-
-
-
-
-
-
+let perfilController = {
+    index: function(req,res){}
+}
 
 
 
