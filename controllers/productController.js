@@ -1,8 +1,9 @@
 let db = require("../db/db"); //importando la lista, para mandarla a renderizar en mi objeto literal, para mostrar productos 
 
 let productController = {
-    home: function(req, res) {
-        return res.render('index', {info:db})
+    todosProducto: function(req, res) {
+        return res.render('todosProductos', 
+        {info:db})
     },
     
     searchResults:function(req,res,next){
@@ -34,6 +35,22 @@ let productController = {
                 resultados: resultado
             })
         } 
+    },
+    detalle:function (req,res) {
+        let idEnviado = req.params.id
+        let detalleProducto = []
+        for (let i = 0; i < db.productos.length; i++) {
+            if (idEnviado == db.productos[i].id) {
+                detalleBanda.push(db.productos[i])
+                return res.render('product',{
+                    info:detalleProducto
+                })
+            }
+        }
+        return res.render('idNovalido',{
+            mensaje:'No existe el id:'+ idEnviado +', intente nuevamente con otro.'})
+        
+        
     }
 
     // <% for(let i=0; i < info.productos.length; i++ ) { %>
