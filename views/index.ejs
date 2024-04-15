@@ -10,9 +10,9 @@
 			<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href='/public/css/bootstrap-grid.min.css'>
+	<link rel="stylesheet" href='/stylesheets/css/bootstrap-grid.min.css'>
 	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href='/public/css/app.css'>
+	<link rel="stylesheet" href='/stylesheets/css/app.css'>
 </head>
 <body>
 	<!-- Header -->
@@ -27,7 +27,7 @@
 	
 				<div class="col-7 col-md-6">
 					<form action="product/searchResults" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
+						<input type="text" name="searchResults" placeholder="Buscar productos, marcas y más" class="search-form_input">
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
@@ -89,10 +89,11 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
-
+<!-- mostrar por cada iteracion un article -->
 				<body>
 					<ul>
 						<% for(let i=0; i < info.productos.length; i++ ) { %>
+							<!-- article por li -->
 							<li>
 								<img src="/<%= info.productos[i].imagen %>" alt="<%= info.productos[i].nombre %>">
 								<h2><%= info.productos[i].producto %></h2>
