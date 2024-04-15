@@ -28,10 +28,9 @@
 				</div>
 	
 				<div class="col-7 col-md-6">
-					<form action="search-results.ejs" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
-							class="search-form_input">
-						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
+					<form action="/searchResults" method="GET" class="search-form">
+						<input type="text" name="searchResults" id="" placeholder="Buscar productos, marcas y más" class="search-form_input">
+						<button type="submit" class="search-form_button">buscar<i class="fas fa-search"></i></button>
 					</form>
 				</div>
 	
@@ -85,7 +84,13 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
+			<h2 class="col-12"> <i>
+				<br> <%= mensaje %> 
+				<br> <%= resultados %>
+				<% for( let i = 0; i < resultados.length; i++ ) { %>
+					<!-- Sestructura que esta en el index -->
+					<p><%= resultados[i].producto %></p>
+				<% } %>
 			Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
 			////////////////
 			</h2>

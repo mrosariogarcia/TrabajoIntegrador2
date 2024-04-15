@@ -22,13 +22,13 @@
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-5 col-md-2">
-					<a href="index.ejs" class="main-header_home-link">
+					<a href="index" class="main-header_home-link">
 						<img src="/public/images/logo-mercado-liebre.svg">
 					</a>
 				</div>
 	
 				<div class="col-7 col-md-6">
-					<form action="search-results.ejs" method="GET" class="search-form">
+					<form action="products/searchResults" method="GET" class="search-form">
 						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
 							class="search-form_input">
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
@@ -49,7 +49,7 @@
 	
 			<nav class="main-navbar">
 				<ul class="left-navbar">
-					<li><a href="index.ejs">Todos los productos</a></li>
+					<li><a href="product">Todos los productos</a></li>
 					<!-- solo logueado <li><a href="">Cargar productos</a></li> -->
 				</ul>
 	
@@ -66,11 +66,11 @@
 							</form>
 						</li> -->
 					<li>
-						<a href="register.ejs">Creá tu cuenta <i class="far fa-address-card"></i>
+						<a href="users/register">Creá tu cuenta <i class="far fa-address-card"></i>
 						</a>
 					</li>
 					<li>
-						<a href="login.ejs">Ingresá <i class="fas fa-sign-in-alt"></i></a>
+						<a href="users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
 					</li>
 				</ul>
 			</nav>
@@ -85,12 +85,12 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
-			</h2>
+			<form action="/perfil" method="GET" >
+				<label>USUARIO</label><input type="email" placeholder="EMAIL">
+				<label>CONTRASEÑA</label><input type="password" placeholder="CONTRASEÑA">
+				<label>RECUERDAME</label><input type="checkbox">
+				<button type="submit"> LOG IN </button>
+			</form>
 
 
 	<!-- footer -->
