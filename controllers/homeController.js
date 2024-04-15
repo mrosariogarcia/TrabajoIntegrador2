@@ -4,7 +4,10 @@ let db = require("../db/db"); //importando la lista, para mandarla a renderizar 
 
 let homeController = {
     index: function(req, res) {
-        res.render('home')
+        return res.render('index', { 
+            db:db,               
+        
+        })
     }
 }
 

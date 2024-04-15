@@ -1,7 +1,7 @@
-let perfilController = {
-    index: function(req,res){}
-}
+// let perfilController = {
+//     index: function(req,res){}
+// }
 
 
 
-module.exports = perfilController
+// module.exports = perfilController

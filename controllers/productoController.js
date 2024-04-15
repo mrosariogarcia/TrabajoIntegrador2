@@ -1,6 +1,6 @@
-let productoController = {
-    index: function(req,res){}
-}
+// let productoController = {
+//     index: function(req,res){}
+// }
 
 
-module.exports = productoController
+// module.exports = productoController
