@@ -16,10 +16,20 @@ let datos = {
             imagen: './public/images/lapiz_negro.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
+                    nombreUsuario: "Trinita004",
+                    textoComentario: "La variedad de colores es perfecta para mis proyectos de arte",
+                    imagenPerfil: " "
                 },
+                {
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "El trazo es suave y preciso. Definitivamente los recomendaría",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Juana_G",
+                    textoComentario: "Borra tinta tambien!",
+                    imagenPerfil: " "
+                }
             ]
         },
         {
@@ -29,10 +39,20 @@ let datos = {
             imagen: './public/images/lapices_colores.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "Roch197",
+                    textoComentario: "Muy buena punta",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "FeliQui89",
+                    textoComentario: "Lo recomiendo para iniciar las clases",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "El trazo es suave y preciso. Definitivamente los recomendaría",
+                    imagenPerfil: " "
+                }    
             ]
         },
         {
@@ -42,10 +62,20 @@ let datos = {
             imagen: './public/images/marcadores_colores.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "Juana_G",
+                    textoComentario: "Un exito, lo usan todos mis hijos!",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Trinita004",
+                    textoComentario: "Buena calidad",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Roch197",
+                    textoComentario: "Funciona tambien para lapices de colores",
+                    imagenPerfil: " "
+                }   
             ]
         },
         {
@@ -55,10 +85,20 @@ let datos = {
             imagen: './public/images/marcador_indeleble.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "FeliQui89",
+                    textoComentario: "Gran calidad",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "Funciona muy bien",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Roch197",
+                    textoComentario: "Gran adhesivo",
+                    imagenPerfil: " "
+                }   
             ]
         },
         {
@@ -68,10 +108,20 @@ let datos = {
             imagen: './public/images/tijera.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "Juana_G",
+                    textoComentario: "Si bien es caro, lo tengo hace 2 anos y no se me seco,un exito la compra",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Trinita004",
+                    textoComentario: "Muy caro",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "FeliQui89",
+                    textoComentario: "Gran durabilidad",
+                    imagenPerfil: " "
+                }    
             ]
         },
         {
@@ -82,10 +132,20 @@ let datos = {
 
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "Precio-calidad, super recomendado",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Juana_G",
+                    textoComentario: "Ideal para la escuela",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Trinita004",
+                    textoComentario: "Gran paleta de colores",
+                    imagenPerfil: " "
+                }   
             ]
         },
         {
@@ -95,9 +155,19 @@ let datos = {
             imagen: './public/images/goma_de_borrar.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
+                    nombreUsuario: "Roch197",
+                    textoComentario: "Colores varios",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "FeliQui89",
+                    textoComentario: "Se lo recomiendo para ninos mayores de 10 anos",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "Buen filo",
+                    imagenPerfil: " "
                 }
             ]
         },
@@ -107,9 +177,19 @@ let datos = {
             imagen: './public/images/hojas_rayadas.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "Gran durabilidad",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Roch197",
+                    textoComentario: "Buenos colores",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Juana_G",
+                    textoComentario: "Producto basico de la cartuchera, gran adquisicion",
+                    imagenPerfil: " "
                 }
             ]
         },
@@ -120,10 +200,20 @@ let datos = {
             imagen: './public/images/hojas_cuadriculadas.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "Trinita004",
+                    textoComentario: "Se me rompen los aujeros rapidamente",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "FeliQui89",
+                    textoComentario: "Me gustaria que vengan mas hojas",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "cortiValen",
+                    textoComentario: "Ideal precio-calidad",
+                    imagenPerfil: " "
+                }   
             ]
         },
         {
@@ -133,10 +223,20 @@ let datos = {
             imagen: './public/images/resaltador_amarillo.jpg',
             comentarios: [
                 {
-                    nombreUsuario: 1,
-                    texto: 1,
-                    imagenPerfil: 1
-                }
+                    nombreUsuario: "Roch197",
+                    textoComentario: "Variedad de colores, un exito",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "Juana_G",
+                    textoComentario: "Punta gorda, ideal para ninos",
+                    imagenPerfil: " "
+                },
+                {
+                    nombreUsuario: "FeliQui89",
+                    textoComentario: "Gran calidad",
+                    imagenPerfil: " "
+                }    
             ]
         }
     ]
