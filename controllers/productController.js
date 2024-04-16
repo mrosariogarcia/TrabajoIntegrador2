@@ -1,8 +1,8 @@
 let db = require("../db/db"); //importando la lista, para mandarla a renderizar en mi objeto literal, para mostrar productos 
 
 let productController = {
-    todosProducto: function(req, res) {
-        return res.render('todosProductos', 
+    producto: function(req, res) {
+        return res.render('product', 
         {info:db})
     },
     
