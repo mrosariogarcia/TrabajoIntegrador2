@@ -6,7 +6,10 @@ router.get("/register",usersController.register);
 router.get("/login",usersController.login);
 
 router.get("/", usersController.detail);
-router.get("/edit", usersController.edit)
+router.get("/edit", usersController.edit);
+
+router.get("/product-add", usersController.productAdd)
+
 
 
 module.exports = router;

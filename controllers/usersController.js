@@ -24,6 +24,12 @@ let usersController = {
         return res.render('profile-edit', {
             datosUsuario: db.usuario
         })
+    },
+
+    productAdd:function(req,res){
+        return res.render('product-add', {
+            datosUsuario: db.usuario
+        })
     }
 }
 
