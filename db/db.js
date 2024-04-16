@@ -13,7 +13,7 @@ let datos = {
             id: 1,
             producto: 'Lapiz negro',
             descripcion: 'El Lápiz Negro Noris Staedtler es la elección perfecta para aquellos que buscan calidad y precisión en su escritura o dibujo.',
-            imagen: './public/images/lapiz_negro.jpg',
+            imagen: '/images/products/lapiz_negro.webp',
             comentarios: [
                 {
                     nombreUsuario: "Trinita004",
@@ -59,7 +59,7 @@ let datos = {
             id: 3,
             producto: 'Marcadores de colores x12',
             descripcion: 'Estos marcadores de doble punta, una biselada y otra redonda, son ideales para una amplia gama de aplicaciones artísticas como manga, retratos, bocetos, dibujo y diseño.',
-            imagen: './public/images/marcadores_colores.jpg',
+            imagen: '/images/products/marcadores_colores.jpg',
             comentarios: [
                 {
                     nombreUsuario: "Juana_G",
@@ -220,7 +220,7 @@ let datos = {
             id:10,
             producto: 'Resaltador amarillo',
             descripcion: 'Su diseño ergonómico permite un uso cómodo y prolongado. La tinta de alta calidad asegura una aplicación suave y uniforme, sin manchas ni desvanecimientos.',
-            imagen: './public/images/resaltador_amarillo.jpg',
+            imagen: '/images/products/resaltador_amarillo.jpg',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
