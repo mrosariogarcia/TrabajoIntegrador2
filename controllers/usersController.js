@@ -11,7 +11,16 @@ let usersController = {
     login: function(req,res){
         return res.render('login')
     },
+    
+    detail: function(req,res){
+        return res.render('profile', {
+        datosUsuario: db.usuario, lista: db.productos, comentarios: db.comentarios}
+        )},
 
+
+    edit: function(req,res){
+        return res.render('edit')
+    }
 }
 
 module.exports = usersController
