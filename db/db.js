@@ -11,9 +11,9 @@ let datos = {
     productos: [
         {
             id: 1,
-            producto: 'Lapiz negro',
-            descripcion: 'El Lápiz Negro Noris Staedtler es la elección perfecta para aquellos que buscan calidad y precisión en su escritura o dibujo.',
-            imagen: '/images/products/lapiz_negro.webp',
+            producto: 'Modelo Zaun',
+            descripcion: '',
+            imagen: '/images/products/',
             comentarios: [
                 {
                     nombreUsuario: "Trinita004",
@@ -34,9 +34,9 @@ let datos = {
         },
         {
             id: 2,
-            producto: 'Lapices de colores x12',
-            descripcion: 'Este set de lápices de alta calidad te permitirá dar rienda suelta a tu creatividad y expresarte a través del arte.',
-            imagen: './public/images/lapices_colores.jpg',
+            producto: 'Modelo Gallery',
+            descripcion: '',
+            imagen: './public/images/',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
@@ -57,9 +57,9 @@ let datos = {
         },
         {
             id: 3,
-            producto: 'Marcadores de colores x12',
-            descripcion: 'Estos marcadores de doble punta, una biselada y otra redonda, son ideales para una amplia gama de aplicaciones artísticas como manga, retratos, bocetos, dibujo y diseño.',
-            imagen: '/images/products/marcadores_colores.jpg',
+            producto: 'Modelo Ice',
+            descripcion: '',
+            imagen: '/images/products/',
             comentarios: [
                 {
                     nombreUsuario: "Juana_G",
@@ -80,9 +80,9 @@ let datos = {
         },
         {
             id: 4,
-            producto: 'Marcador indeleble negro',
-            descripcion: 'Este marcador permanente es de alta calidad y durabilidad.',
-            imagen: './public/images/marcador_indeleble.jpg',
+            producto: 'Modelo Earl',
+            descripcion: '',
+            imagen: './public/images/',
             comentarios: [
                 {
                     nombreUsuario: "FeliQui89",
@@ -103,9 +103,9 @@ let datos = {
         },
         {
             id:5,
-            producto: 'Tijera',
-            descripcion: 'Esta tijera es un producto de alta calidad, ideal para uso en oficinas, comercios o el hogar.',
-            imagen: './public/images/tijera.jpg',
+            producto: 'Modelo Flaneur',
+            descripcion: '',
+            imagen: './public/images/',
             comentarios: [
                 {
                     nombreUsuario: "Juana_G",
@@ -126,9 +126,9 @@ let datos = {
         },
         {
             id:6,
-            producto: 'Voligoma',
-            descripcion: 'Adhesivo sintético voligoma transparente x30 ml.',
-            imagen: './public/images/voligoma.jpg',
+            producto: 'Modelo Square',
+            descripcion: '',
+            imagen: './public/images/',
 
             comentarios: [
                 {
@@ -150,9 +150,9 @@ let datos = {
         },
         {
             id:7,
-            producto: 'Goma de borrar',
-            descripcion: 'Este producto de alta calidad, de color blanco y forma rectangular, viene en un pack de dos unidades, lo que garantiza que siempre tendrás una a mano.',
-            imagen: './public/images/goma_de_borrar.jpg',
+            producto: 'Modelo Valencia',
+            descripcion: '',
+            imagen: './public/images/',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
@@ -172,9 +172,9 @@ let datos = {
             ]
         },
         {   id:8,
-            producto: 'Hojas rayadas A4',
-            descripcion: 'Este repuesto escolar es un producto de alta calidad, diseñado para satisfacer las necesidades tanto de estudiantes como de profesionales.',
-            imagen: './public/images/hojas_rayadas.jpg',
+            producto: 'Modelo True Collin',
+            descripcion: '',
+            imagen: './public/images/',
             comentarios: [
                 {
                     nombreUsuario: "cortiValen",
@@ -195,9 +195,9 @@ let datos = {
         },
         {
             id:9,
-            producto: 'Hojas cuadriculadas A4',
-            descripcion: 'Este repuesto escolar es un producto de alta calidad, diseñado para satisfacer las necesidades tanto de estudiantes como de profesionales, ideales para calculos matematicos y/o graficar.',
-            imagen: './public/images/hojas_cuadriculadas.jpg',
+            producto: 'Modelo Ridder',
+            descripcion: '',
+            imagen: './public/images/',
             comentarios: [
                 {
                     nombreUsuario: "Trinita004",
@@ -218,9 +218,9 @@ let datos = {
         },
         {
             id:10,
-            producto: 'Resaltador amarillo',
-            descripcion: 'Su diseño ergonómico permite un uso cómodo y prolongado. La tinta de alta calidad asegura una aplicación suave y uniforme, sin manchas ni desvanecimientos.',
-            imagen: '/images/products/resaltador_amarillo.jpg',
+            producto: 'Modelo Capital',
+            descripcion: '',
+            imagen: '/images/products/',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
