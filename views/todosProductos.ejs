@@ -4,39 +4,35 @@
     <!-- HEADER -->
         <%- include("./partials/headerNoLogueado") %>
         
-            <!-- Novedades -->
-                <div class="container products-wrapper">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="products-title">Todos los productos</h2>
-                        </div>
-                        <!-- Show the "ultimos" products -->
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <!-- mostrar por cada iteracion un article -->
+    <!-- Novedades -->
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title">Todos los productos</h2>
+            </div>
+            <!-- Show the "ultimos" products -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <!-- mostrar por cada iteracion un article -->
+                <ul>
+                    <% for(let i=0; i < info.productos.length; i++ ) { %>
+                        <!-- article por li -->
+                        <li>
+                            <img src="/<%= info.productos[i].imagen %>"
+                                alt="<%= info.productos[i].nombre %>">
+                            <h2>
+                                <%= info.productos[i].producto %>
+                            </h2>
+                            <p>
+                                <%= info.productos[i].descripcion %>
+                            </p>
+                            </a>
+                        </li>
 
-                            <ul>
-                                <% for(let i=0; i < info.productos.length; i++ ) { %>
-                                    <!-- article por li -->
-                                    <li>
-                                        <img src="/<%= info.productos[i].imagen %>"
-                                            alt="<%= info.productos[i].nombre %>">
-                                        <h2>
-                                            <%= info.productos[i].producto %>
-                                        </h2>
-                                        <p>
-                                            <%= info.productos[i].descripcion %>
-                                        </p>
-                                        </a>
-                                    </li>
-
-                                    <%}%>
-                            </ul>
-
-
-
-                        </div>
-                    </div>
-                </div>
+                        <%}%>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
 		<%- include("./partials/footer") %>
