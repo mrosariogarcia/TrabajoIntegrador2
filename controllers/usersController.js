@@ -14,12 +14,16 @@ let usersController = {
     
     detail: function(req,res){
         return res.render('profile', {
-        datosUsuario: db.usuario, lista: db.productos, comentarios: db.comentarios}
+            datosUsuario: db.usuario, 
+            lista: db.productos, 
+            comentarios: db.comentarios
+        }
         )},
 
-
     edit: function(req,res){
-        return res.render('edit')
+        return res.render('profile-edit', {
+            datosUsuario: db.usuario
+        })
     }
 }
 
