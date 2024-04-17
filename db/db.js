@@ -12,22 +12,22 @@ let datos = {
         {
             id: 1,
             producto: 'Modelo Zaun',
-            descripcion: '',
-            imagen: '/images/products/',
+            descripcion: '"Estilo vibrante para todos los días."',
+            imagen: '/images/products/Anteojos1.png',
             comentarios: [
                 {
                     nombreUsuario: "Trinita004",
-                    textoComentario: "La variedad de colores es perfecta para mis proyectos de arte",
+                    textoComentario: "Me encanta cómo estos anteojos complementan mi outfit!",
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "cortiValen",
-                    textoComentario: "El trazo es suave y preciso. Definitivamente los recomendaría",
+                    textoComentario: "Son tan cómodos que ni siquiera siento que los llevo puestos.",
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "Juana_G",
-                    textoComentario: "Borra tinta tambien!",
+                    textoComentario: "Estos anteojos son perfectos para cualquier ocasión."                    ,
                     imagenPerfil: " "
                 }
             ]
@@ -35,22 +35,22 @@ let datos = {
         {
             id: 2,
             producto: 'Modelo Gallery',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'Elegancia y versatilidad en cada mirada.',
+            imagen: '/images/products/Anteojos2.png',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
-                    textoComentario: "Muy buena punta",
+                    textoComentario: "¡Qué buena elección de colores! Realmente destacan."                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "FeliQui89",
-                    textoComentario: "Lo recomiendo para iniciar las clases",
+                    textoComentario: "Me siento más seguro de mí mismo usando estos anteojos."                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "cortiValen",
-                    textoComentario: "El trazo es suave y preciso. Definitivamente los recomendaría",
+                    textoComentario: "¡Son tan cancheros que siempre recibo cumplidos cuando los uso!"                    ,
                     imagenPerfil: " "
                 }    
             ]
@@ -58,8 +58,8 @@ let datos = {
         {
             id: 3,
             producto: 'Modelo Ice',
-            descripcion: '',
-            imagen: '/images/products/',
+            descripcion: 'Colores que destacan en cualquier ocasión',
+            imagen: '/images/products/Anteojos3.png',
             comentarios: [
                 {
                     nombreUsuario: "Juana_G",
@@ -73,7 +73,7 @@ let datos = {
                 },
                 {
                     nombreUsuario: "Roch197",
-                    textoComentario: "Funciona tambien para lapices de colores",
+                    textoComentario: "¡Estos anteojos le dan un toque único a mi estilo!"                    ,
                     imagenPerfil: " "
                 }   
             ]
@@ -81,22 +81,22 @@ let datos = {
         {
             id: 4,
             producto: 'Modelo Earl',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'Modernidad y comodidad en un diseño único',
+            imagen: '/images/products/Anteojos4.png',
             comentarios: [
                 {
                     nombreUsuario: "FeliQui89",
-                    textoComentario: "Gran calidad",
+                    textoComentario: "No puedo creer lo ligeros que son. ¡Son geniales!"                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "cortiValen",
-                    textoComentario: "Funciona muy bien",
+                    textoComentario: "Definitivamente una excelente inversión en accesorios."                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "Roch197",
-                    textoComentario: "Gran adhesivo",
+                    textoComentario: "¡Son tan versátiles que puedo usarlos con todo!"                    ,
                     imagenPerfil: " "
                 }   
             ]
@@ -104,12 +104,12 @@ let datos = {
         {
             id:5,
             producto: 'Modelo Flaneur',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'Impacta con un toque de sofisticación',
+            imagen: '/images/products/Anteojos5.png',
             comentarios: [
                 {
                     nombreUsuario: "Juana_G",
-                    textoComentario: "Si bien es caro, lo tengo hace 2 anos y no se me seco,un exito la compra",
+                    textoComentario: "¡Mis amigos siempre me preguntan dónde conseguí estos anteojos!"                    ,
                     imagenPerfil: " "
                 },
                 {
@@ -119,7 +119,7 @@ let datos = {
                 },
                 {
                     nombreUsuario: "FeliQui89",
-                    textoComentario: "Gran durabilidad",
+                    textoComentario: "¡Me siento como una estrella de cine con estos anteojos!"                    ,
                     imagenPerfil: " "
                 }    
             ]
@@ -127,8 +127,8 @@ let datos = {
         {
             id:6,
             producto: 'Modelo Square',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'El accesorio perfecto para realzar tu estilo.',
+            imagen: '/images/products/Anteojos6.png',
 
             comentarios: [
                 {
@@ -138,12 +138,12 @@ let datos = {
                 },
                 {
                     nombreUsuario: "Juana_G",
-                    textoComentario: "Ideal para la escuela",
+                    textoComentario: "¡Son el regalo perfecto para cualquier amante de la moda!"                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "Trinita004",
-                    textoComentario: "Gran paleta de colores",
+                    textoComentario: "¡Me encanta cómo se adaptan a la forma de mi rostro!"                    ,
                     imagenPerfil: " "
                 }   
             ]
@@ -151,30 +151,30 @@ let datos = {
         {
             id:7,
             producto: 'Modelo Valencia',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'Cancheros y llenos de personalidad.',
+            imagen: '/images/products/Anteojos7.png',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
-                    textoComentario: "Colores varios",
+                    textoComentario: "¡Estoy obsesionado con estos anteojos! No puedo parar de usarlos."                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "FeliQui89",
-                    textoComentario: "Se lo recomiendo para ninos mayores de 10 anos",
+                    textoComentario: "¡Los colores de estos anteojos realmente iluminan mi rostro!"                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "cortiValen",
-                    textoComentario: "Buen filo",
+                    textoComentario: "¡Son tan duraderos que sé que los disfrutaré durante mucho tiempo!"                    ,
                     imagenPerfil: " "
                 }
             ]
         },
         {   id:8,
             producto: 'Modelo True Collin',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'Refleja tu estilo con estos anteojos llamativos.',
+            imagen: '/images/products/Anteojos8.png',
             comentarios: [
                 {
                     nombreUsuario: "cortiValen",
@@ -183,12 +183,12 @@ let datos = {
                 },
                 {
                     nombreUsuario: "Roch197",
-                    textoComentario: "Buenos colores",
+                    textoComentario: "¡No puedo creer lo asequibles que son para la calidad que ofrecen!"                    ,
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "Juana_G",
-                    textoComentario: "Producto basico de la cartuchera, gran adquisicion",
+                    textoComentario: "¡Los colores de estos anteojos realmente iluminan mi rostro!"                    ,
                     imagenPerfil: " "
                 }
             ]
@@ -196,17 +196,17 @@ let datos = {
         {
             id:9,
             producto: 'Modelo Ridder',
-            descripcion: '',
-            imagen: './public/images/',
+            descripcion: 'Combina moda y funcionalidad en cada par.',
+            imagen: '/images/products/Anteojos9.png',
             comentarios: [
                 {
                     nombreUsuario: "Trinita004",
-                    textoComentario: "Se me rompen los aujeros rapidamente",
+                    textoComentario: "¡Me encanta cómo puedo cambiar mi estilo con solo cambiar de anteojos!",
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "FeliQui89",
-                    textoComentario: "Me gustaria que vengan mas hojas",
+                    textoComentario: "Me gustaria que vengan mas chiquitos",
                     imagenPerfil: " "
                 },
                 {
@@ -219,17 +219,17 @@ let datos = {
         {
             id:10,
             producto: 'Modelo Capital',
-            descripcion: '',
-            imagen: '/images/products/',
+            descripcion: 'Resalta tu look con estos anteojos imprescindibles.',
+            imagen: '/images/products/Anteojos10.png',
             comentarios: [
                 {
                     nombreUsuario: "Roch197",
-                    textoComentario: "Variedad de colores, un exito",
+                    textoComentario: "Un exito",
                     imagenPerfil: " "
                 },
                 {
                     nombreUsuario: "Juana_G",
-                    textoComentario: "Punta gorda, ideal para ninos",
+                    textoComentario: "¡Estos anteojos son el toque final perfecto para cualquier look!",
                     imagenPerfil: " "
                 },
                 {
