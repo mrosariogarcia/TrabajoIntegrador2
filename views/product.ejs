@@ -21,18 +21,21 @@
 					<div class="row">
 						<article class="col-12 col-lg-8 product-detail-info">
 							<img src=<%=info.productos[0].imagen %> alt="" class="product-detail-img">
+
+
+
+							<h2 class="products-title">
+								<%= info.productos[0].producto%>
+									</p>
+							</h2>
+
 							<p class="product-detail-description">
 								<%= info.productos[0].descripcion%>
 							</p>
 						</article>
+
 						<div class="col-12 col-lg-4">
 							<section class="comments">
-
-
-								<h2 class="products-title">
-									<%= info.productos[0].producto%>
-										</p>
-								</h2>
 
 								<% for(let i=0; i < 3; i++) { %>
 									<article class="pp">
@@ -55,8 +58,10 @@
 								<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 								<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 							</form>
+					
 							<hr>
 						</div>
+
 					</div>
 				</div>
 			</div>
