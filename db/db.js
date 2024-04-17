@@ -5,7 +5,7 @@ let datos = {
         contrasena: 'elMascrack',
         fechaDeNacimiento: '2000-05-25',
         DNI: 40887455,
-        fotoDePerfil: './public/images/foto_de_perfil.jpg'
+        fotoDePerfil: '/images/users/defaultPP.png'
     },
 
     productos: [

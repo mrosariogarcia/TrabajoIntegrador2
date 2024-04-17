@@ -8,15 +8,16 @@
 			<!-- product detail -->
 			<div class="container products-wrapper">
 				<div class="d-flex align-items-center">
-					<h2 class="products-title">
-						<%= info.productos[0].producto%>
-							</p>
-					</h2>
-					<p class="product-detail-description">
-						<a href="/product/product-add.ejs">Editar</a>
+					<p class="product-detail-description editar" >
+						<a href="/product/product-add">Editar</a>
 					</p>
 				</div>
+
+
 				<div class="product-detail">
+
+				
+
 					<div class="row">
 						<article class="col-12 col-lg-8 product-detail-info">
 							<img src=<%=info.productos[0].imagen %> alt="" class="product-detail-img">
@@ -27,10 +28,18 @@
 						<div class="col-12 col-lg-4">
 							<section class="comments">
 
+
+								<h2 class="products-title">
+									<%= info.productos[0].producto%>
+										</p>
+								</h2>
+
 								<% for(let i=0; i < 3; i++) { %>
-									<article>
-										<img src="<%= info.productos[0].comentarios[i].imagenPerfil %>" alt="">
+									<article class="pp">
+
+										<img src="<%= info.productos[0].comentarios[i].fotoDePerfil%>" alt="">
 										<div class="data">
+
 											<p class="user">
 												<strong> <a href="profile.ejs">
 														<%= info.productos[0].comentarios[i].nombreUsuario %>
