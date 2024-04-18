@@ -64,6 +64,9 @@ hr {
   border-bottom: solid 1px var(--light-gray);
 }
 
+p{
+  margin: 0px;
+}
 
 /*====== Main Header ======*/
 .main-header {
@@ -134,6 +137,7 @@ hr {
 
 .left-navbar,
 .right-navbar {
+  margin-top: 20px;
   font-size: 1.5em;
   font-weight: bold;
   color: whitesmoke;
@@ -141,7 +145,7 @@ hr {
 
 .nombre  {
   font-family: 'Raleway'; 
-  font-size: 3em; 
+  font-size: 20PX; 
   text-decoration: none; 
   color: #ddadda; 
   text-transform: uppercase;
@@ -183,9 +187,16 @@ hr {
 
 
 /*====== Products ======*/
+.container products-wrapper {
+  margin: none;
+  padding: none;
+}
+
 .products-wrapper {
   margin-top: 30px;
   margin-bottom: 30px;
+  padding: none;
+  border: none;
 }
 
 .products-title {
