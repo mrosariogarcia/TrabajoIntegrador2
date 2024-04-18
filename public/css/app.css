@@ -367,14 +367,20 @@ p{
 
 .editar {
   border-radius: 20px;
-  justify-content: center;
-  text-align: center;
+  justify-content: right;
+  text-align: right;
   background-color: palevioletred;
   color:whitesmoke;
   font-weight: bolder;
   font-size: medium;
+  
 
 }
+.smaller-image {
+  max-width: 150px; 
+  margin-top: 20px; 
+}
+
 
 .product-detail-price {
   font-size: 5.5em;
