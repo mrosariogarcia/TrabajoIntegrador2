@@ -5,7 +5,7 @@ let datos = {
         contrasena: 'elMascrack',
         fechaDeNacimiento: '2000-05-25',
         DNI: 40887455,
-        fotoDePerfil:'/images/users/defaultPP.png'
+        fotoDePerfil:'/images/users/juli.png'
     },
 
     productos: [
@@ -18,17 +18,17 @@ let datos = {
                 {
                     nombreUsuario: "Trinita004",
                     textoComentario: "Me encanta cómo estos anteojos complementan mi outfit!",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/trini.png"
                 },
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "Son tan cómodos que ni siquiera siento que los llevo puestos.",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 },
                 {
                     nombreUsuario: "Juana_G",
                     textoComentario: "Estos anteojos son perfectos para cualquier ocasión."                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/juana.png"
                 }
             ]
         },
@@ -41,17 +41,17 @@ let datos = {
                 {
                     nombreUsuario: "Roch197",
                     textoComentario: "¡Qué buena elección de colores! Realmente destacan."                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/rochi.png"
                 },
                 {
                     nombreUsuario: "FeliQui89",
                     textoComentario: "Me siento más seguro de mí mismo usando estos anteojos."                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/feli.png"
                 },
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "¡Son tan cancheros que siempre recibo cumplidos cuando los uso!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 }    
             ]
         },
@@ -64,17 +64,17 @@ let datos = {
                 {
                     nombreUsuario: "Juana_G",
                     textoComentario: "Un exito, lo usan todos mis hijos!",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/juana.png"
                 },
                 {
                     nombreUsuario: "Trinita004",
                     textoComentario: "Buena calidad",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/trini.png"
                 },
                 {
                     nombreUsuario: "Roch197",
                     textoComentario: "¡Estos anteojos le dan un toque único a mi estilo!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/rochi.png"
                 }   
             ]
         },
@@ -87,17 +87,17 @@ let datos = {
                 {
                     nombreUsuario: "FeliQui89",
                     textoComentario: "No puedo creer lo ligeros que son. ¡Son geniales!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/feli.png"
                 },
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "Definitivamente una excelente inversión en accesorios."                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 },
                 {
                     nombreUsuario: "Roch197",
                     textoComentario: "¡Son tan versátiles que puedo usarlos con todo!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/rochi.png"
                 }   
             ]
         },
@@ -110,17 +110,17 @@ let datos = {
                 {
                     nombreUsuario: "Juana_G",
                     textoComentario: "¡Mis amigos siempre me preguntan dónde conseguí estos anteojos!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/juana.png"
                 },
                 {
                     nombreUsuario: "Trinita004",
                     textoComentario: "Muy caro",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/trini.png"
                 },
                 {
                     nombreUsuario: "FeliQui89",
                     textoComentario: "¡Me siento como una estrella de cine con estos anteojos!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/feli.png"
                 }    
             ]
         },
@@ -134,17 +134,17 @@ let datos = {
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "Precio-calidad, super recomendado",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 },
                 {
                     nombreUsuario: "Juana_G",
                     textoComentario: "¡Son el regalo perfecto para cualquier amante de la moda!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/juana.png"
                 },
                 {
                     nombreUsuario: "Trinita004",
                     textoComentario: "¡Me encanta cómo se adaptan a la forma de mi rostro!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/trini.png"
                 }   
             ]
         },
@@ -157,17 +157,17 @@ let datos = {
                 {
                     nombreUsuario: "Roch197",
                     textoComentario: "¡Estoy obsesionado con estos anteojos! No puedo parar de usarlos."                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/rochi.png"
                 },
                 {
                     nombreUsuario: "FeliQui89",
                     textoComentario: "¡Los colores de estos anteojos realmente iluminan mi rostro!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/feli.png"
                 },
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "¡Son tan duraderos que sé que los disfrutaré durante mucho tiempo!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 }
             ]
         },
@@ -179,17 +179,17 @@ let datos = {
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "Gran durabilidad",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 },
                 {
                     nombreUsuario: "Roch197",
                     textoComentario: "¡No puedo creer lo asequibles que son para la calidad que ofrecen!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/rochi.png"
                 },
                 {
                     nombreUsuario: "Juana_G",
                     textoComentario: "¡Los colores de estos anteojos realmente iluminan mi rostro!"                    ,
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/juana.png"
                 }
             ]
         },
@@ -202,17 +202,17 @@ let datos = {
                 {
                     nombreUsuario: "Trinita004",
                     textoComentario: "¡Me encanta cómo puedo cambiar mi estilo con solo cambiar de anteojos!",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/trini.png"
                 },
                 {
                     nombreUsuario: "FeliQui89",
                     textoComentario: "Me gustaria que vengan mas chiquitos",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/feli.png"
                 },
                 {
                     nombreUsuario: "cortiValen",
                     textoComentario: "Ideal precio-calidad",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/valen.png"
                 }   
             ]
         },
@@ -225,17 +225,17 @@ let datos = {
                 {
                     nombreUsuario: "Roch197",
                     textoComentario: "Un exito",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/rochi.png"
                 },
                 {
                     nombreUsuario: "Juana_G",
                     textoComentario: "¡Estos anteojos son el toque final perfecto para cualquier look!",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/juana.png"
                 },
                 {
                     nombreUsuario: "FeliQui89",
                     textoComentario: "Gran calidad",
-                    imagenPerfil: "/images/users/defaultPP.png"
+                    imagenPerfil: "/images/users/feli.png"
                 }    
             ]
         }

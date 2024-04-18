@@ -139,6 +139,18 @@ hr {
   color: whitesmoke;
 }
 
+.nombre  {
+  font-family: 'Raleway'; 
+  font-size: 3em; 
+  text-decoration: none; 
+  color: #ddadda; 
+  text-transform: uppercase;
+  letter-spacing: 2px; 
+  font-weight: bold; 
+  text-align: center;
+  
+}
+
 .logout{
   background: transparent;
   border: 0px;
