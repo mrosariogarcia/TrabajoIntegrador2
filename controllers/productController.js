@@ -7,17 +7,16 @@ let productController = {
     },
     
     searchResults:function(req,res,next){
-        let searchResults = req.query.searchResults;
+        let searchResults = req.params.searchResults;
+        
         let resultado = [];
-        
-        
-        for (let i = 0; i < db.productos.length; i++) {
-        console.log(db.productos[i].producto==searchResults);
 
+        for (let i = 0; i < db.productos.length; i++) {
             let productoABuscar = db.productos[i].producto;
+            
+            console.log(productoABuscar == searchResults);
 
             if (searchResults == productoABuscar){
-            
                 resultado.push(db.productos[i])
             }
         }
@@ -48,7 +47,8 @@ let productController = {
             }
         }
         return res.render('idNovalido',{
-            mensaje:'No existe el id:'+ idEnviado +', intente nuevamente con otro.'})
+            mensaje:'No existe el id:'+ idEnviado +', intente nuevamente con otro.'
+        })
         
         
     }
