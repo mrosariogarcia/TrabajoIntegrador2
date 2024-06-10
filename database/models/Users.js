@@ -1,6 +1,6 @@
 module.exports = function (sequelize, dataTypes) {
     // Definir un alias.
-    let alias = 'Users'; // Con este alias Sequelize va a poder identificar internamente al archivo de modelo.
+    let alias = 'User'; // Con este alias Sequelize va a poder identificar internamente al archivo de modelo.
     // Describir la configuracion de las columnas de la tabla
     let cols = {
         id_usuario: {
@@ -29,18 +29,18 @@ module.exports = function (sequelize, dataTypes) {
         timestamps: true,
         underscore: true, // Si los nombres de las columna en la db tienen guiones bajos en el lugar de camelCase.
     }
-    const Users = sequelize.define(alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
     
-Users.associate = function (models) {
-    Users.hasMany(models.Product, {
+User.associate = function (models) {
+    User.hasMany(models.Product, {
         as: 'productos', //Como voy a llamar a la relación dentro del controlador
         foreignKey: 'id_usuario'
     })
-    Users.hasMany(models.Comentarios, {
+    User.hasMany(models.Comentarios, {
         as: 'comentarios',
         foreignKey: 'id_usuario'
     })
 }
 
-return Users;
+return User;
 }

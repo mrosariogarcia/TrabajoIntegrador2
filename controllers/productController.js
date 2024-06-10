@@ -1,6 +1,7 @@
 let db = require("../db/db"); //importando la lista, para mandarla a renderizar en mi objeto literal, para mostrar productos 
 
 let productController = {
+
     producto: function(req, res) {
         return res.render('product', {
             info:db
@@ -36,6 +37,10 @@ let productController = {
                 info:detalleProducto
             })
         }
+    },
+
+    agregar: function(req, res){
+        console.log(req)
     }
 
     // <% for(let i=0; i < info.productos.length; i++ ) { %>
@@ -47,6 +52,7 @@ let productController = {
     //     </li>
 
     //     <%}%>
+
 }
 
 module.exports = productController
