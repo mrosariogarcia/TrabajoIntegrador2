@@ -40,8 +40,8 @@ module.exports = function (sequelize, dataTypes ) {
             as: 'product', // como voy a llamar a la reclacion en el controlador
             foreignKey: 'id_producto'
         }),
-        Comentario.belongsTo( models.Users, {
-            as: 'users', // como voy a llamar a la reclacion en el controlador
+        Comentario.belongsTo( models.User, {
+            as: 'user', // como voy a llamar a la reclacion en el controlador
             foreignKey: 'id_usuario'
         })
     }

@@ -1,7 +1,8 @@
 /* importaríamos la base de datos */
-
-let db = require("../db/db"); //importando la lista, para mandarla a renderizar en mi objeto literal, para mostrar productos 
-
+const { where } = require('sequelize');
+const db = require('../database/models');
+const users = db.User;
+const op = db.Sequelize.Op;
 // requerimos express validator y validationResults
 const {validationResults} = require('express-validator');
 
@@ -26,10 +27,30 @@ let usersController = {
         
         return res.render('register')
     },
-
-    login: function(req,res){
+    logindex: function (req, res) {
+        //Mostramos el form de login
         return res.render('login')
     },
+    login: function (req, res) {
+        // buscar el usuario que se quiere loguear 
+        users.findOne({
+            where: [{
+                email: req.body.email
+            }]
+
+        })
+            .then(function (user) {
+                res.session.user = user
+                if (req.body.rememberme != undefined) {
+                    res.cookie('userId', user.id, { maxAge: 1000 * 60 * 5 })
+                }
+
+                return res.redirect('/');
+
+            })
+            .catch(function(error){ console.log(error) })
+
+    },  
     
     detail: function(req,res){
         return res.render('profile', {

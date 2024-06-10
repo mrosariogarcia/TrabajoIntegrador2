@@ -36,7 +36,7 @@ User.associate = function (models) {
         as: 'productos', //Como voy a llamar a la relación dentro del controlador
         foreignKey: 'id_usuario'
     })
-    User.hasMany(models.Comentarios, {
+    User.hasMany(models.Comentario, {
         as: 'comentarios',
         foreignKey: 'id_usuario'
     })
