@@ -1,5 +1,5 @@
 module.exports = function (sequelize, dataTypes ) {
-    let alias = "Comentarios"; 
+    let alias = "Comentario"; 
     let cols = { 
         id_comentario: {
             autoIncrement : true,
@@ -12,7 +12,7 @@ module.exports = function (sequelize, dataTypes ) {
         id_producto: {
             type : dataTypes.INTEGER
         },
-        texto_comentarios: {
+        texto_comentario: {
             type : dataTypes.STRING
         },
         createdAt: {
@@ -27,24 +27,24 @@ module.exports = function (sequelize, dataTypes ) {
   	}
 
     let config = {
-        tableName: "comentarios", 
+        tableName: "comentario", 
         timestamps: true, 
         underscored: true 
     }
     
-    let Comentarios = sequelize.define(alias, cols, config);
+    let Comentario = sequelize.define(alias, cols, config);
 
     // Aca va las relaciones
-    Comentarios.associate = function (models) {
-        Comentarios.belongsTo( models.Product, {
+    Comentario.associate = function (models) {
+        Comentario.belongsTo( models.Product, {
             as: 'product', // como voy a llamar a la reclacion en el controlador
             foreignKey: 'id_producto'
         }),
-        Comentarios.belongsTo( models.Users, {
+        Comentario.belongsTo( models.Users, {
             as: 'users', // como voy a llamar a la reclacion en el controlador
             foreignKey: 'id_usuario'
         })
     }
 
-    return Comentarios;
+    return Comentario;
 }

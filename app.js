@@ -3,15 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 const session = require('express-session');
-app.use(session(
-  {
-    secret:"Udesa Trabajo Integrador",
-    saveUninitialized: true,
-    resave:false
-  }
-))
+
+app.use(session ({
+  secret: 'Udesa TI', 
+  saveUninitialized: true, 
+  resave: false 
+}))
 
 var indexRouter = require('./routes/index');
 var productRouter = require("./routes/product");
