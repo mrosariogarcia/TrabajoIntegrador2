@@ -4,7 +4,7 @@ module.exports = function (sequelize, dataTypes) {
     // Describir la configuracion de las columnas de la tabla
     let cols = {
         id_usuario: {
-            autoincrement: true,
+            autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
@@ -22,12 +22,21 @@ module.exports = function (sequelize, dataTypes) {
         },
         fotoPerfil: {
             type: dataTypes.STRING
+        },
+        createdAt: {
+            type : dataTypes.DATE
+        },
+        updatedAt: {
+            type : dataTypes.DATE
+        },
+        deletedAt: {
+            type : dataTypes.DATE
         }
-    }
+  	}
     let config = {
-        table: 'usuario',
-        timestamps: true,
-        underscore: true, // Si los nombres de las columna en la db tienen guiones bajos en el lugar de camelCase.
+        tableName: 'usuario',
+        timestamps: false,
+        underscored: true, // Si los nombres de las columna en la db tienen guiones bajos en el lugar de camelCase.
     }
     const User = sequelize.define(alias, cols, config);
     

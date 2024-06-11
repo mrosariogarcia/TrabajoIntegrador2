@@ -11,45 +11,13 @@
 						<h2 class="products-title">Registrate</h2>
 					</div>
 					<!-- Show the "ultimos" products -->
-					<form action="/users/" method="POST"> <!-- aca antes decia login.html -->
-						<!-- 
-						<label for="email">Email:</label><br>
-						<input type="email" id="email" name="email" required><br>
-						
-						<label for="usuario">Usuario:</label><br>
-						<input type="text" id="usuario" name="usuario" required><br>
-						
-						<label for="contraseña">Contraseña:</label><br>
-						<input type="password" id="contraseña" name="contraseña" required><br>
-						
-						<label for="fechaNacimiento">Fecha de nacimiento:</label><br>
-						<input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br>
-						
-						<label for="nroDocumento">Número de documento:</label><br>
-						<input type="number" id="nroDocumento" name="nroDocumento" required><br><br>
-						
-						<label for="fotoPerfil">Foto de perfil (URL):</label><br>
-						<input type="text" id="fotoPerfil" name="fotoPerfil"><br><br>
-						-->
-						
-						<label for="email">EMAIL </label>
-						<input type="email" placeholder="EMAIL" name="email"> <br><br>
-
-						<label for="usuario">NOMBRE DE USUARIO </label>
-						<input type="text" placeholder="USUARIO" name="usuario"><br><br>
-
-						<label for="contraseña">CONTRASEÑA </label>
-						<input type="password" placeholder="CONTRASEÑA" name="contraseña"><br><br>
-						
-						<label for="fechaNacimiento">FECHA DE NACIMIENTO </label>
-						<input type="date" placeholder="FECHA NACIMIENTO" name="fechaNacimiento"><br><br>
-						
-						<label for="nroDocumento">NUMERO DE DOCUMENTO </label>
-						<input type="number" placeholder="NRO DOCUMENTO" name="nroDocumento"> <br><br>
-						
-						<label for="fotoPerfil">FOTO DE PERFIL </label>
-						<input type="file" placeholder="FOTO DE PERFIL" name="fotoPerfil"><br><br>
-
+					<form action="/users/register" method="POST"> <!-- aca antes decia login.html -->
+						<label>EMAIL </label><input type="email" placeholder="EMAIL"> <br><br>
+						<label>NOMBRE DE USUARIO </label><input type="text" placeholder="USUARIO"><br><br>
+						<label>CONTRASEÑA </label><input type="password" placeholder="CONTRASEÑA"><br><br>
+						<label>FECHA DE NACIMIENTO </label><input type="date" placeholder="FECHA NACIMIENTO"><br><br>
+						<label>NUMERO DE DOCUMENTO </label><input type="number" placeholder="NRO DOCUMENTO"> <br><br>
+						<label>FOTO DE PERFIL </label><input type="file" placeholder="FOTO DE PERFIL"><br><br> 
 						<button type="submit"> REGISTRARME </button><br><br>
 					</form>
 					<div class="col-md-6 text-center">

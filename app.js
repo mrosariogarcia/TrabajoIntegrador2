@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
+// instalamos session
 const session = require('express-session');
-
-
 
 var indexRouter = require('./routes/index');
 var productRouter = require("./routes/product");
@@ -24,11 +24,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Aca "usamos" session
 app.use(session ({
   secret: 'Udesa TI', 
   saveUninitialized: true, 
   resave: false 
 }));
+
+// antes de las rutas dejo disponible datos de session para todas las vistas
+app.use(function(req, res, next) {
+  if (req.session.user != undefined) {
+    res.locals.user = req.session.user;
+    return next()
+  }
+  return next()
+});
 
 app.use('/', indexRouter);
 app.use('/product',productRouter);
