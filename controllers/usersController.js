@@ -9,23 +9,16 @@ const {validationResults} = require('express-validator');
 
 let usersController = {
 
-    register: function(req,res){
-        // obtenemos los resultados de las validaciones
-        const resultValidation = validationResults(req);
-
-        // preguntamos si hay errores
-        if (!resultValidation.isEmpty()) {
-            console.log("resultValidation: ", JSON.stringify(resultValidation))
-            return res.render('register', {
-                errors: resultValidation.mapped(),
-                oldData: req.body 
-            })
+    register: function(req,res,next){
+        
+        if (req.session.user != undifined) {
+            return res.redirect('/users/profile/id/' + req.session.user.id)
         } 
         else {
-
+            return res.render('register', {
+                tittle: 'Register'
+            })
         }
-        
-        return res.render('register')
     },
     logindex: function (req, res) {
         //Mostramos el form de login
