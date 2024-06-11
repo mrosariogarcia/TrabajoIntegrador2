@@ -4,14 +4,14 @@ const db = require('../database/models');
 const users = db.User;
 const op = db.Sequelize.Op;
 // requerimos express validator y validationResults
-const {validationResults} = require('express-validator');
+const {validationResult} = require('express-validator');
 
 
 let usersController = {
 
     register: function(req,res){
         // obtenemos los resultados de las validaciones
-        const resultValidation = validationResults(req);
+        const resultValidation = validationResult(req);
 
         // preguntamos si hay errores
         if (!resultValidation.isEmpty()) {
