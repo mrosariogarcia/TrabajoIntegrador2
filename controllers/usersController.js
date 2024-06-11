@@ -1,5 +1,4 @@
 /* importaríamos la base de datos */
-const { where } = require('sequelize');
 const db = require('../database/models');
 const users = db.User;
 const op = db.Sequelize.Op;
