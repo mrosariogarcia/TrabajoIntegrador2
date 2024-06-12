@@ -10,7 +10,6 @@ router.get("/edit", usersController.edit);
 
 router.get("/product-add", usersController.productAdd)
 
-router.post('/register',usersController.store)
 
 
 module.exports = router;
