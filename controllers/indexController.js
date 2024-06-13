@@ -1,4 +1,4 @@
-let db = require("../db/db")
+let db = require("../database/models/index")
 
 let indexController= {
 

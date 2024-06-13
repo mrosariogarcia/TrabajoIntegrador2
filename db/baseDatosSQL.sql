@@ -9,9 +9,9 @@ CREATE TABLE usuario (
 id_usuario INT UNSIGNED PRIMARY KEY auto_increment,
 email VARCHAR(255),
 contrasena VARCHAR(255),
-fecha DATE,
+fechaDeNacimiento DATE,
 dni INT,
-fotoPerfil TEXT,
+fotoDePerfil TEXT,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -22,9 +22,9 @@ deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 CREATE TABLE productos(
 id_producto INT UNSIGNED PRIMARY KEY auto_increment,
 id_usuario INT UNSIGNED,
-nombreProducto TEXT,
-imagenProducto TEXT,
-descripcionProducto TEXT,
+producto TEXT,
+imagen TEXT,
+descripcion TEXT,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -37,7 +37,7 @@ CREATE TABLE comentarios(
 id_comentario INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 id_usuario INT UNSIGNED,
 id_producto INT UNSIGNED,
-comentarios TEXT,
+textoComentario TEXT,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -45,7 +45,7 @@ FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
 FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 -- Inserción de usuarios
-INSERT INTO usuario (id_usuario,email, contrasena, fecha, dni, fotoPerfil)
+INSERT INTO usuario (id_usuario,email, contrasena, fechaDeNacimiento, dni, fotoDePerfil)
 VALUES 
 (DEFAULT,'juanagrether@gmail.com', 'contraseña1', '2005-05-28', 46753188, '/img/foto_perfil1.jpg'),
 (DEFAULT,'trinidadfontan@gmail.com', 'contraseña2', '2004-02-02', 45751382, '/img/foto_perfil2.jpg'),
@@ -55,21 +55,21 @@ VALUES
 
 
 -- Inserción de productos
-INSERT INTO productos (id_producto,id_usuario,nombreProducto, imagenProducto,  descripcionProducto)
+INSERT INTO productos (id_producto,id_usuario, producto, imagen, descripcion)
 VALUES 
-(DEFAULT,1, 'Modelo Zaun','imagen_zaun.jpg', 'Estilo vibrante para todos los días.'),
-(DEFAULT,2, 'Modelo Gallery','imagen_gallery.jpg', 'Elegancia y versatilidad en cada mirada.'),
-(DEFAULT,3, 'Modelo Ice', 'imagen_icehojas.jpg','Colores que destacan en cualquier ocasión.'),
-(DEFAULT,4, 'Modelo Earl', 'imagen_earl.jpg', 'Modernidad y comodidad en un diseño único.'),
-(DEFAULT,5, 'Modelo Flaneur','imagen_flaneurtijera.jpg',  'Impacta con un toque de sofisticación.'),
-(DEFAULT,1, 'Modelo Square','imagen_square.jpg', 'El accesorio perfecto para realzar tu estilo.'),
-(DEFAULT,2,'Modelo Valencia','imagen_valencia.jpg','Cancheros y llenos de personalidad.'),
-(DEFAULT,3,'Modelo True Collin','imagen_collin.jpg','Refleja tu estilo con estos anteojos llamativos.'),
-(DEFAULT,4,'Modelo Ridder', 'imagen_ridder.jpg','Combina moda y funcionalidad en cada par.'),
-(DEFAULT,5,'Modelo Capital','imagen_capital.jpg','Resalta tu look con estos anteojos imprescindibles.');
+(DEFAULT,1, 'Modelo Zaun','/images/products/Anteojos1.png', 'Estilo vibrante para todos los días.'),
+(DEFAULT,2, 'Modelo Gallery','/images/products/Anteojos2.png', 'Elegancia y versatilidad en cada mirada.'),
+(DEFAULT,3, 'Modelo Ice', '/images/products/Anteojos3.png','Colores que destacan en cualquier ocasión.'),
+(DEFAULT,4, 'Modelo Earl', '/images/products/Anteojos4.png', 'Modernidad y comodidad en un diseño único.'),
+(DEFAULT,5, 'Modelo Flaneur','/images/products/Anteojos5.png',  'Impacta con un toque de sofisticación.'),
+(DEFAULT,1, 'Modelo Square','/images/products/Anteojos6.png', 'El accesorio perfecto para realzar tu estilo.'),
+(DEFAULT,2,'Modelo Valencia','/images/products/Anteojos7.png','Cancheros y llenos de personalidad.'),
+(DEFAULT,3,'Modelo True Collin','/images/products/Anteojos8.png','Refleja tu estilo con estos anteojos llamativos.'),
+(DEFAULT,4,'Modelo Ridder', '/images/products/Anteojos9.png','Combina moda y funcionalidad en cada par.'),
+(DEFAULT,5,'Modelo Capital','/images/products/Anteojos10.png','Resalta tu look con estos anteojos imprescindibles.');
 
 -- Inserción de comentarios
-INSERT INTO comentarios (id_comentario,id_usuario,id_producto, comentarios)
+INSERT INTO comentarios (id_comentario,id_usuario,id_producto, textoComentario)
 VALUES 
 (DEFAULT,1, 1, '¡Estos anteojos son el toque final perfecto para cualquier look!'),
 (DEFAULT,2, 1, 'Ideal precio-calidad. Definitivamente los recomendaría'),
@@ -101,9 +101,3 @@ VALUES
 (DEFAULT,4, 10, 'Impacta con un toque de sofisticación'),
 (DEFAULT,5, 10, 'Son tan versátiles que puedo usarlos con todo!'),
 (DEFAULT,1, 10, 'Definitivamente una excelente inversión en accesorios.');
-
-
-
-
-
-

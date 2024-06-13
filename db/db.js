@@ -4,7 +4,7 @@ let datos = {
         usuario: 'juliope',
         contrasena: 'elMascrack',
         fechaDeNacimiento: '2000-05-25',
-        DNI: 40887455,
+        dni: 40887455,
         fotoDePerfil:'/images/users/juli.png'
     },
 
