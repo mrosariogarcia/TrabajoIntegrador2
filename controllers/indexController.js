@@ -1,9 +1,15 @@
-let db = require("../database/models/index")
+let db = require("../database/models")
 
 let indexController= {
 
     home: function(req, res) {
-        return res.render('index', {info:db})
+        db.Product.findAll()
+            .then(function(data){
+                res.render('index',{productos:data})
+            })    
+            .catch(function (error) {
+                console.log(error);
+              }); 
     },
 }
 

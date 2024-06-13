@@ -12,15 +12,15 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.INTEGER
         },
 
-        nombreProducto:{
+        producto:{
             type: dataTypes.STRING
         },
 
-        imagenProducto:{
+        imagen:{
             type: dataTypes.STRING
         },
 
-        descripcionProducto:{
+        descripcion:{
             type: dataTypes.STRING
         },
 

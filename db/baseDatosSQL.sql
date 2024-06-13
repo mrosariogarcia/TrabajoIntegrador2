@@ -8,6 +8,7 @@ USE trabajoIntegrador;
 CREATE TABLE usuario (
 id_usuario INT UNSIGNED PRIMARY KEY auto_increment,
 email VARCHAR(255),
+usuario VARCHAR(250) ,
 contrasena VARCHAR(255),
 fechaDeNacimiento DATE,
 dni INT,
@@ -45,13 +46,13 @@ FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
 FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
 -- Inserción de usuarios
-INSERT INTO usuario (id_usuario,email, contrasena, fechaDeNacimiento, dni, fotoDePerfil)
+INSERT INTO usuario (id_usuario,email,usuario, contrasena, fechaDeNacimiento, dni, fotoDePerfil)
 VALUES 
-(DEFAULT,'juanagrether@gmail.com', 'contraseña1', '2005-05-28', 46753188, '/img/foto_perfil1.jpg'),
-(DEFAULT,'trinidadfontan@gmail.com', 'contraseña2', '2004-02-02', 45751382, '/img/foto_perfil2.jpg'),
-(DEFAULT,'rosariogarcia@gmail.com', 'contraseña3', '2005-03-03', 456789123, '/img/foto_perfil3.jpg'),
-(DEFAULT,'simongonzales@gmail.com', 'contraseña4', '1999-04-04', 654903789, '/img/foto_perfil4.jpg'),
-(DEFAULT,'luciaperes@gmail.com', 'contraseña5', '2000-05-05', 321089456, '/img/foto_perfil5.jpg');
+(DEFAULT,'juanagrether@gmail.com','juanagrether' ,'contraseña1', '2005-05-28', 46753188, '/img/foto_perfil1.jpg'),
+(DEFAULT,'trinidadfontan@gmail.com', 'trinidadfontan','contraseña2', '2004-02-02', 45751382, '/img/foto_perfil2.jpg'),
+(DEFAULT,'rosariogarcia@gmail.com', 'rosariogarcia','contraseña3', '2005-03-03', 456789123, '/img/foto_perfil3.jpg'),
+(DEFAULT,'simongonzales@gmail.com','simongonzales', 'contraseña4', '1999-04-04', 654903789, '/img/foto_perfil4.jpg'),
+(DEFAULT,'luciaperes@gmail.com', 'luciaperes','contraseña5', '2000-05-05', 321089456, '/img/foto_perfil5.jpg');
 
 
 -- Inserción de productos
