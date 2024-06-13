@@ -40,6 +40,8 @@ app.use(function(req, res, next) {
   return next()
 });
 
+
+
 app.use('/', indexRouter);
 app.use('/product',productRouter);
 app.use('/users',usersRouter);
