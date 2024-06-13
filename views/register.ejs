@@ -11,23 +11,30 @@
 						<h2 class="products-title">Registrate</h2>
 					</div>
 					<!-- Show the "ultimos" products -->
-					<form action="/users/" method="GET"> <!-- aca antes decia login.html -->
-						<label>EMAIL </label><input type="email" placeholder="EMAIL"> <br><br>
-						<label>NOMBRE DE USUARIO </label><input type="text" placeholder="USUARIO"><br><br>
-						<label>CONTRASEÑA </label><input type="password" placeholder="CONTRASEÑA"><br><br>
-						<label>FECHA DE NACIMIENTO </label><input type="date" placeholder="FECHA NACIMIENTO"><br><br>
-						<label>NUMERO DE DOCUMENTO </label><input type="number" placeholder="NRO DOCUMENTO"> <br><br>
-						<label>FOTO DE PERFIL </label><input type="file" placeholder="FOTO DE PERFIL"><br><br> 
+					<form action="/users/register" method="POST"> <!-- aca antes decia login.html -->
+						<label>EMAIL </label><input type="email" name="email" placeholder="EMAIL"> <br><br>
+						<label>NOMBRE DE USUARIO </label><input type="text" name="usuario"
+							placeholder="USUARIO"><br><br>
+						<label>CONTRASEÑA </label><input type="password" name="contrasena"
+							placeholder="CONTRASEÑA"><br><br>
+						<label>FECHA DE NACIMIENTO </label><input type="date" name="fechaDeNacimiento"
+							placeholder="FECHA NACIMIENTO"><br><br>
+						<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni" placeholder="NRO DOCUMENTO">
+						<br><br>
+						<label>FOTO DE PERFIL </label><input type="file" name="fotoDePerfil"
+							placeholder="FOTO DE PERFIL"><br><br>
 						<button type="submit"> REGISTRARME </button><br><br>
-					</form>
-					<div class="col-md-6 text-center">
-						<img src="/images/users/defaultPP.png" alt="fotaca" class="img-fluid smaller-image">
-					</div>
+						</form>
+
+
+						<div class="col-md-6 text-center">
+							<img src="/images/users/defaultPP.png" alt="fotaca" class="img-fluid smaller-image">
+						</div>
 
 
 
-					<!-- FOOTER -->
-					<%- include("./partials/footer") %>
+						<!-- FOOTER -->
+						<%- include("./partials/footer") %>
 
 	</body>
 
