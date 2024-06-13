@@ -1,6 +1,6 @@
 const {body} = require("express-validator");
 
-const loginValidations = [
+const loginValidation = [
 
     body("email")
         .notEmpty()
@@ -38,3 +38,5 @@ const loginValidations = [
         }),
 
 ]
+
+module.exports = loginValidation;
