@@ -1,6 +1,6 @@
 /* importaríamos la base de datos */
 
-let db = require("../database/models"); //importando la lista, para mandarla a renderizar en mi objeto literal, para mostrar productos 
+let db = require("../database/models"); 
 const {body} = require('express-validator');
 
 let usersController = {
@@ -14,7 +14,7 @@ let usersController = {
         let user = {
             email: req.body.email,
             usuario: req.body.usuario,
-            contrasena:req.body.contrasena,
+            contrasena:bcrypt.hashSync(req.body.contrasena, 10),
             fechaDeNacimiento:req.body.fechaDeNacimiento,
             dni:req.body.dni,
             fotoDePerfil:req.body.fotoDePerfil

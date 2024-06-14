@@ -1,6 +1,7 @@
 const { body } = require("express-validator")
 const db = require('../database/models')
-const bcryptjs = require("bcryptjs")
+const bcrypt = require('bcryptjs');
+
 
 const registerValidation = [       
     body("email")
@@ -25,8 +26,11 @@ const registerValidation = [
 
     body("contrasena")
         .notEmpty()
-        .withMessage("Debes completar una constrasena"),
-    
+        .withMessage("Debes completar una constrasena")
+        .isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres')
+        .notEmpty().withMessage('La contraseña es obligatoria')
+        .isString().withMessage('La contraseña debe ser un texto'),
+    body('fotoDePerfil')
 ]
 
 
