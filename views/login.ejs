@@ -11,7 +11,7 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<form action="/" method="POST" >
+			<form action="/users/login" method="POST" >
 
 				<label>USUARIO  </label> <input type="email" name="email" placeholder="EMAIL" value="<%= locals.oldData && oldData.email ? oldData.email : null  %>"><br><br>
 				<!-- preguntamos en INPUT VALUES si hay errores en locals -->

@@ -2,8 +2,8 @@
 const { where } = require('sequelize');
 let db = require("../database/models"); 
 const {validationResult} = require("express-validator"); 
+const bcrypt = require("bcryptjs")
 
-const users = db.User;
 const op = db.Sequelize.Op;
 
 let usersController = {
@@ -65,7 +65,7 @@ let usersController = {
     
             db.User.findOne({where: [{ email: email }]})
             .then(function(user){
-                return res.redirect('/login')
+                return res.redirect('/index')
             })
         
             .catch(function(error){ console.log(error) })
