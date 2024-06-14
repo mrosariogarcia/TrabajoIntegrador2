@@ -21,23 +21,31 @@ let loginController = {
         //revisar que no haya errores en validations
 
         if(resultValidation.isEmpty()){ // porque no queremos que este vacio?
+            console.log("resultValidation:", JSON.stringify(resultValidation,null,4));
             return res.render('login', {
                 errors: resultValidation.mapped(),
                 oldData: req.body
             })
+
         }
 
-        let user = {
-            email: req.body.email,
-            contrasena:req.body.contrasena,
-        }
+        else{
 
-        db.User.findOne({where: [{ email: email }]})
-        .then(function(user){
-            return res.redirect('/login')
-        })
+            let user = {
+                email: req.body.email,
+                contrasena: bcrypt.hashSync(req.body.contrasena, 10),
+            }
     
-        .catch(function(error){ console.log(error) })
+            db.User.findOne({where: [{ email: email }]})
+            .then(function(user){
+                return res.redirect('/login')
+            })
+        
+            .catch(function(error){ console.log(error) })
+
+        }
+
+        
 
     },
 }
