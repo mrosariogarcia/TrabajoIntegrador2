@@ -17,13 +17,14 @@ module.exports = function (sequelize, dataTypes) {
         contrasena: {
             type: dataTypes.STRING,
         },
-        fecha: {
+        fechaDeNacimiento: {
             type: dataTypes.DATE,
         },
+        
         dni: {
             type: dataTypes.INTEGER,
         },
-        fotoPerfil: {
+        fotoDePerfil: {
             type: dataTypes.STRING
         },
         createdAt: {

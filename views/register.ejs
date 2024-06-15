@@ -11,30 +11,38 @@
 						<h2 class="products-title">Registrate</h2>
 					</div>
 					<!-- Show the "ultimos" products -->
-					<form action="/users/register" method="POST"> <!-- aca antes decia login.html -->
-						<label>EMAIL </label><input type="email" name="email" placeholder="EMAIL"> <br><br>
-						<label>NOMBRE DE USUARIO </label><input type="text" name="usuario"
-							placeholder="USUARIO"><br><br>
-						<label>CONTRASEÑA </label><input type="password" name="contrasena"
-							placeholder="CONTRASEÑA"><br><br>
-						<label>FECHA DE NACIMIENTO </label><input type="date" name="fechaDeNacimiento"
-							placeholder="FECHA NACIMIENTO"><br><br>
-						<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni" placeholder="NRO DOCUMENTO">
-						<br><br>
-						<label>FOTO DE PERFIL </label><input type="file" name="fotoDePerfil"
-							placeholder="FOTO DE PERFIL"><br><br>
-						<button type="submit"> REGISTRARME </button><br><br>
-						</form>
+					<% if (locals.errors) { errors.forEach (function(error){ %>
+						<p>
+							<%= error.msg %>
+						</p>
+						<% }) }
+						%>
+							<form action="/users/register" method="POST"> <!-- aca antes decia login.html -->
+								<label>EMAIL </label><input type="email" name="email" placeholder="EMAIL"
+								value="<%= locals.old && old.email ? old.email : ''  %>"> <br><br>
+								<label>NOMBRE DE USUARIO </label><input type="text" name="usuario"
+									placeholder="USUARIO" value="<%= locals.old && old.name ? old.name : ''  %>"><br><br>
+								<label>CONTRASEÑA </label><input type="password" name="contrasena"
+									placeholder="CONTRASEÑA" value="<%= locals.old && old.constrasena ? old.constrasena : ''  %>"><br><br>
+								<label>FECHA DE NACIMIENTO </label><input type="date" name="fechaDeNacimiento"
+									placeholder="FECHA NACIMIENTO" value="<%= locals.old && old.fechaDeNacimiento ? old.fechaDeNacimiento : ''  %>"><br><br>
+								<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni"
+									placeholder="NRO DOCUMENTO" value="<%= locals.old && old.dni ? old.dni : ''  %>">
+								<br><br>
+								<label>FOTO DE PERFIL </label><input type="file" name="fotoDePerfil"
+									placeholder="FOTO DE PERFIL" value="<%= locals.old && old.fotoDePerfil ? old.fotoDePerfil : ''  %>"><br><br>
+								<button type="submit"> REGISTRARME </button><br><br>
+							</form>
 
 
-						<div class="col-md-6 text-center">
-							<img src="/images/users/defaultPP.png" alt="fotaca" class="img-fluid smaller-image">
-						</div>
+							<div class="col-md-6 text-center">
+								<img src="/images/users/defaultPP.png" alt="fotaca" class="img-fluid smaller-image">
+							</div>
 
 
 
-						<!-- FOOTER -->
-						<%- include("./partials/footer") %>
+							<!-- FOOTER -->
+							<%- include("./partials/footer") %>
 
 	</body>
 
