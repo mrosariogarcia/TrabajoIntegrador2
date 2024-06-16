@@ -5,45 +5,46 @@ const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const op = db.Sequelize.Op;
-
 let usersController = {
-    register: function (req, res) {
-        //Mostrar el formulario de registro
-        return res.render('register');
-    },
 
+    register: function(req, res, next) {
+        
+     
+        if (req.session.user != undefined) {
+            return res.redirect("/users/profile/id/" + req.session.user.id); //no deberia reditigir a la home o al perfil?
+        } 
+        else {
+            return res.render('register')
+        };
+    },
     store: function (req, res) {
-        //obtenemos los resultados de las validaciones
+        console.log('Solicitud recibida para registrar usuario');
+        //guardar el usuario en la db
         const errors = validationResult(req);
-        // preguntamos si hay errores y si los hay los enviamos a la vista, junto con lo que venía en el body         
-        if (errors.isEmpty()){
-             //guardar el usuario en la db
-             let user = {
+        if (errors.isEmpty()) {
+            console.log('Datos del usuario:', req.body)
+            let user = {
                 email: req.body.email,
                 usuario: req.body.usuario,
                 contrasena: bcrypt.hashSync(req.body.contrasena, 10),
                 fechaDeNacimiento: req.body.fechaDeNacimiento,
                 dni: req.body.dni,
                 fotoDePerfil: req.body.fotoDePerfil
-            };
-            //creamos el usuario
+            }
+            console.log('Usuario a crear:', user)
             db.User.create(user)
                 .then(function (user) {
-                    return res.redirect('/users/login'); // le tenes que pasar la ruta
+                    console.log('Nuevo usuario creado:', user)
+                    return res.redirect('/users/login') // le tenes que pasar la ruta
+
                 })
                 .catch(function (err) {
-                    console.log("Error al guardar el usuario", err);
+                    console.log(err)
                 });
-
+        } else {
+            console.log('Errores de validación:', errors.mapped());
+            return res.render('register', { errors: errors.mapped(), old: req.body });
         }
-        else{
-            return res.render('register',{
-                errors:errors.mapped(),
-                old:req.body
-
-            })
-        }
-        
         
     },
             
