@@ -2,8 +2,8 @@ const { body } = require("express-validator")
 const db = require('../database/models')
 const registerValidation = [       
     body("email")
-        .isEmail()
-        .withMessage("Debes escribir un formato de correo valido")
+        .notEmpty().withMessage('El campo Mail es obligatorio.').bail()
+        .isEmail().withMessage("Debes escribir un formato de correo valido").bail()
         .custom(function (value, { req }) {
             //Desestrucutramos "req".
             return db.User.findOne({
@@ -16,18 +16,12 @@ const registerValidation = [
                 })
         }),
     body("name")
-        .notEmpty()
-        .withMessage("Es un campo obligatorio, debes completar tu nombre")
-        .isString()
-        .withMessage("Debes completar tu nombre en texto"),
+        .notEmpty().withMessage("Es un campo obligatorio, debes completar tu nombre"),
 
     body("contrasena")
-        .notEmpty()
-        .withMessage("Debes completar una constrasena")
+        .notEmpty().withMessage("Es un campo obligatorio, debes completar una constrasena")
         .isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres')
-        .notEmpty().withMessage('La contraseña es obligatoria')
-        .isString().withMessage('La contraseña debe ser un texto'),
-    
+            
 ]
 
 

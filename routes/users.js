@@ -4,6 +4,7 @@ const usersController = require('../controllers/usersController');
 const registerValidation = require('../middlewares/register-validator')
 const loginValidation = require("../middlewares/login-validator");
 
+
 router.get("/register",usersController.register);
 router.post("/register",registerValidation,usersController.store)
 

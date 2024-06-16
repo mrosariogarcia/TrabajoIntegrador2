@@ -38,7 +38,7 @@ let usersController = {
         }
         else{
             return res.render('register',{
-                errors:errors.array(),
+                errors:errors.mapped(),
                 old:req.body
 
             })

@@ -39,8 +39,8 @@ module.exports = function (sequelize, dataTypes) {
   	}
     let config = {
         tableName: 'usuario',
-        timestamps: false,
-        underscored: true, // Si los nombres de las columna en la db tienen guiones bajos en el lugar de camelCase.
+        timestamps: true,
+        underscored: false, // Si los nombres de las columna en la db tienen guiones bajos en el lugar de camelCase.
     }
     const User = sequelize.define(alias, cols, config);
     
