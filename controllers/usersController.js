@@ -56,6 +56,12 @@ let usersController = {
     },
 
     login: function (req, res, next) {
+
+        let user = {
+            email: req.body.email,
+            contrasena: bcrypt.hashSync(req.body.contrasena, 10),
+        };
+
         //Resultados de las validaciones de login
         const resultValidation = validationResult(req);
 
