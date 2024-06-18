@@ -1,8 +1,15 @@
 <%- include("./partials/head") %>
 
     <body>
-    <!-- HEADER -->
-        <%- include("./partials/headerNoLogueado") %>
+
+    <!-- Header -->
+        <% if (locals.user != undefined) { %>
+            <%- include("./partials/headerLogueado") %> 
+        <% } else { %>
+            <%- include("./partials/headerNoLogueado") %>
+        <% } %>
+	<!-- /Header -->
+
 
             <div class="banner">
                 <img src='/images/banner.png' alt="" class="banner">
