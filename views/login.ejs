@@ -21,8 +21,8 @@
 					<!-- LOCALS: las variables locales que se pasan desde el controlador a la vista -->
 				
 				<!-- preguntamos en INPUT VALUES si existe olda data () en locals -->
-				<label>CONTRASEÑA  </label><input type="password" name="constrasena" placeholder="CONTRASEÑA"><br><br>
-					<% if (locals.errors && errors.constrasena) { %>
+				<label>CONTRASEÑA  </label><input type="password" name="contrasena" placeholder="CONTRASEÑA" value="<%= locals.oldData && oldData.contrasena ? oldData.contrasena : null  %>"><br><br>
+					<% if (locals.errors && errors.contrasena) { %>
 						<div><%= errors.contrasena.msg %></div>
 					<% } %>
 

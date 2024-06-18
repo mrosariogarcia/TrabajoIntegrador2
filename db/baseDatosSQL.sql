@@ -102,3 +102,8 @@ VALUES
 (DEFAULT,4, 10, 'Impacta con un toque de sofisticación'),
 (DEFAULT,5, 10, 'Son tan versátiles que puedo usarlos con todo!'),
 (DEFAULT,1, 10, 'Definitivamente una excelente inversión en accesorios.');
+
+
+
+
+

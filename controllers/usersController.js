@@ -5,6 +5,7 @@ const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 const op = db.Sequelize.Op;
+
 let usersController = {
 
     register: function(req, res, next) {
@@ -17,6 +18,7 @@ let usersController = {
             return res.render('register')
         };
     },
+    
     store: function (req, res) {
         console.log('Solicitud recibida para registrar usuario');
         //guardar el usuario en la db
@@ -53,31 +55,41 @@ let usersController = {
         return res.render('login');
     },
 
-    login: function (req, res) {
+    login: function (req, res, next) {
         //Resultados de las validaciones de login
         const resultValidation = validationResult(req);
 
         //revisar que no haya errores en validations
-        if (!resultValidation.isEmpty()) {
+        if (resultValidation.isEmpty()){
+
+            //console.log('Usuario a buscar:', user)
+
+            db.User.findOne({ where: { email: req.body.email } })
+                .then(function (user) {
+                    console.log('Usuario logueado:', user)
+
+                    if(user!=undefined){
+                        return res.redirect('/')
+                    }
+
+                    else{
+                        return res.redirect('/'); 
+                    }
+
+                })
+
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
+        else{
             console.log("resultValidation:", JSON.stringify(resultValidation, null, 4));
             return res.render('login', {
                 errors: resultValidation.mapped(),
                 oldData: req.body
             });
-        } else {
-            let user = {
-                email: req.body.email,
-                contrasena: bcrypt.hashSync(req.body.contrasena, 10),
-            };
-
-            db.User.findOne({ where: { email: user.email } })
-                .then(function (user) {
-                    return res.redirect('/index');
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
+        }    
     },
 
     detail: function (req, res) {
