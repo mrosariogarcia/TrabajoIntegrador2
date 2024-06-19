@@ -18,7 +18,7 @@
 			<!-- Show the "ultimos" products -->
 			<form action="/users/login" method="POST" novalidate>
 
-				<label>USUARIO  </label> <input type="email" name="email" placeholder="EMAIL" value="<%= locals.oldData && oldData.email ? oldData.email : null  %>"><br><br>
+				<label>USUARIO </label> <input type="email" name="email" placeholder="EMAIL" value="<%= locals.oldData && oldData.email ? oldData.email : null  %>"><br><br>
 				<!-- preguntamos en INPUT VALUES si hay errores en locals -->
 					<% if (locals.errors && errors.email) { %>
 						<div><%= errors.email.msg %></div>
@@ -26,14 +26,13 @@
 					<!-- LOCALS: las variables locales que se pasan desde el controlador a la vista -->
 				
 				<!-- preguntamos en INPUT VALUES si existe olda data () en locals -->
-				<label>CONTRASEÑA  </label><input type="password" name="contrasena" placeholder="CONTRASEÑA" value="<%= locals.oldData && oldData.contrasena ? oldData.contrasena : null  %>"><br><br>
+				<label>CONTRASEÑA </label><input type="password" name="contrasena" placeholder="CONTRASEÑA" value="<%= locals.oldData && oldData.contrasena ? oldData.contrasena : null  %>"><br><br>
 					<% if (locals.errors && errors.contrasena) { %>
 						<div><%= errors.contrasena.msg %></div>
 					<% } %>
 
 
-				<label>RECUERDAME  </label><input type="checkbox"><br><br>
-				
+				<label> RECUERDAME  </label><input type="checkbox" name="recordarme" placeholder="RECORDARME" value="ok"><br><br>
 				<button type="submit"> LOG IN </button><br><br>
 			
 			</form>

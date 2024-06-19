@@ -75,6 +75,11 @@ let usersController = {
 
                         req.session.user = user
                         console.log("Usuario en sesion:", req.session.user)
+
+                        //RECORDAR USUARIO : cookie
+                        if(req.body.recordarme){
+                            res.cookie("userId", user.id_usuario, { maxAge: 1000 * 60 * 500})
+                        }
                         return res.redirect('/')
 
                     }
@@ -88,7 +93,10 @@ let usersController = {
                 .catch(function (error) {
                     console.log(error);
                 });
+                
         }
+
+
 
         else{
             console.log("resultValidation:", JSON.stringify(resultValidation, null, 4));
@@ -100,7 +108,8 @@ let usersController = {
     },
 
     logout: function(req, res, next){
-        req.session.destroy()
+        req.session.destroy();
+        res.clearCookie("userId");
         return res.redirect("/");
     },
 

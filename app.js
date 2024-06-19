@@ -44,7 +44,33 @@ app.use(function(req, res, next) {
   return next()
 });
 
+app.use(function(req, res, next) {
 
+  if(req.cookies.userId != undefined && req.session.user == undefined){
+    // guardar datos para no tener que loguearse continuamente
+    let idCookie = req.cookies.userId;
+    
+    //buscar en la base de datos el usuario con el ID de la Cookie
+    db.User.findByPk(idCookie)
+      .then(function(user){
+        console.log("middleware de la cookie")
+        req.session.user = user 
+        // si el usuario eligio recordarse, ya va a estar logueado
+        console.log("en la cookie middleware")
+        res.locals.user = user //guardamos en locals tambien
+      
+      return next()
+
+      })
+
+      .catch(function (error) {
+        console.log("Error en cookies", error);
+      });
+  }
+
+  else{ return next() }
+
+});
 
 app.use('/', indexRouter);
 app.use('/product',productRouter);

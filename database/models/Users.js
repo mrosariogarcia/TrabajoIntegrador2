@@ -31,7 +31,10 @@ module.exports = function (sequelize, dataTypes) {
             type: dataTypes.INTEGER,
         },
         fotoDePerfil: {
-            type: dataTypes.STRING
+            type: dataTypes.STRING,
+        },
+        recordarme: {
+            type: dataTypes.BOOLEAN,
         },
         createdAt: {
             type : dataTypes.DATE
