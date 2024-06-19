@@ -3,7 +3,7 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 
 router.get('/', productController.producto);
-router.get('/searchResults', productController.searchResults);
+router.get('/searchResults', productController.search);
 router.get('/detalle', productController.detalle);
 router.get('/product-add', productController.agregar);
 
