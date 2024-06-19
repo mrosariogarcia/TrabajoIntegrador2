@@ -1,58 +1,70 @@
-let db = require("../db/db"); //importando la lista, para mandarla a renderizar en mi objeto literal, para mostrar productos 
+const { where, Association } = require('sequelize');
+let db = require("../database/models");
+const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+const Op = db.Sequelize.Op;
 
 let productController = {
 
-    producto: function(req, res) {
+    producto: function (req, res) {
         return res.render('product', {
-            info:db
-        })
-    },
-    
-    searchResults:function(req,res){
-        res.render('search-results', {
-            info:db.productos
-        })
+            info: db
+        });
     },
 
-    detalle:function(req,res){
+    search: function (req, res) {
+        let busqueda = req.query.search;
+        let filtro = {
+            where: {
+                [Op.or]: [
+                    { producto: { [Op.like]: "%" + busqueda + "%" } },
+                    { descripcion: { [Op.like]: "%" + busqueda + "%" } }
+                ]
+            },
+            order: [["createdAt", "DESC"]],
+            include: [
+                { association: 'comentarios' },
+                { association: 'usuario' }
+            ]
+        };
+
+        db.Product.findAll(filtro)
+            .then(function (results) {
+                return res.render("search-results", { productos: results });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+
+    detalle: function (req, res) {
         let idEnviado = req.params.id;
         let productoEnviado = req.params.producto;
         let detalleProducto = [];
 
         for (let i = 0; i < db.products.length; i++) {
             let idProducto = db.productos[i].id;
-            if (idEnviado == idProducto){
-                detalleProducto.push(db.productos[i])
-            }      
-        };
-        if (detalleProducto.length >= 1){
+            if (idEnviado == idProducto) {
+                detalleProducto.push(db.productos[i]);
+            }
+        }
+
+        if (detalleProducto.length >= 1) {
             return res.render('product', {
                 mensaje: `Éste es el detalle del producto ${productoEnviado}.`,
-                info:detalleProducto
-            })
-        }
-        else {
+                info: detalleProducto
+            });
+        } else {
             return res.render('product', {
                 mensaje: `No encontramos detalle del producto ${productoEnviado}.`,
-                info:detalleProducto
-            })
+                info: detalleProducto
+            });
         }
     },
 
-    agregar: function(req, res){
-        console.log(req)
+    agregar: function (req, res) {
+        console.log(req);
     }
+};
 
-    // <% for(let i=0; i < info.productos.length; i++ ) { %>
-    //     <li>
-    //         <img src="/<%= info.productos[i].imagen %>" alt="<%= info.productos[i].nombre %>">
-    //         <h2><%= info.productos[i].producto %></h2>
-    //         <p><%= info.productos[i].descripcion %></p>
-    //     </a>                   
-    //     </li>
-
-    //     <%}%>
-
-}
-
-module.exports = productController
+module.exports = productController;

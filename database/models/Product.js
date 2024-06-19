@@ -50,12 +50,12 @@ module.exports = function(sequelize, dataTypes){
         
         Product.belongsTo(models.User, {
             foreignKey: "id_usuario",
-            as: "usuario",
+            as: "usuario", // como voy a llamar a la asociacion en los controladores 
         })
 
         Product.hasMany(models.Comentario, {
             foreignKey: "id_producto",
-            as: "comentario",
+            as: "comentarios", // como voy a llamar a la asociacion en los controladores 
         })
     }
 

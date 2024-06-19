@@ -10,20 +10,27 @@
 			<div class="col-12">
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
+			<% if (error){ %>
+				<p> <%=error %></p>
+				<% } %>
 			<!-- Show the "ultimos" products -->
+
 			<div class="container products-wrapper">
 				<div class="row">
-					<% for (let i = 0; i < 4; i++) { %>
+					<% for (let i = 0; i < productos.length; i++) { %>
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
-								<a href="/product">
+								<a href="/product/<%= productos[i].id  %>">
 									<figure class="product-box_image">
-										<img src="<%= info[i].imagen %>" alt="<%= info[i].producto %>">
+										<img src="/images/product/<%= productos[i].imagen  %>" alt="">
 									</figure>
 									<article class="product-box_data">
-										<h2><%= info[i].producto %></h2>
-										<p><%= info[i].descripcion %></p>
-										<p><%= info[i].comentarios %></p>
+
+										<h2><%= productos[i].producto %></h2>
+										<p><%= productos[i].descripcion %></p>
+										<p>Comentatios: <%= productos[i].comentarios.texto_comentario %></p>
+										<p>Cargado por: <a href="/users/profile/id/<%= productos[i].usuario.id_usuario %>"><%=productos[i].usuario.usuario %> </a></p>
+
 									</article>
 								</a>
 							</section>
