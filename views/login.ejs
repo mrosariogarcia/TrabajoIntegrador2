@@ -2,7 +2,12 @@
 
     <body>
 	<!-- HEADER -->
-        <%- include("./partials/headerNoLogueado") %>
+	<% if (locals.user != undefined) { %>
+		<%- include("./partials/headerLogueado") %>
+	<% } else { %>
+		<%- include("./partials/headerNoLogueado") %>
+	<% } %>
+
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">

@@ -28,15 +28,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session ({
   secret: 'Udesa TI', 
   saveUninitialized: true, 
-  resave: false 
+  resave: false, 
 }));
 
-// antes de las rutas dejo disponible datos de session para todas las vistas
 app.use(function(req, res, next) {
-  if (req.session.user != undefined) {
+  console.log('Middleware de sesión');
+  console.log('req.session:', req.session);
+
+  if (req.session.user !== undefined) {
     res.locals.user = req.session.user;
+    console.log('Entre a locals');
+    console.log(req.locals);
     return next()
-  }
+  } 
   return next()
 });
 
