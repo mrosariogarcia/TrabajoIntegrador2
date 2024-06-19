@@ -11,6 +11,8 @@ router.post("/register",registerValidation,usersController.store)
 router.get("/login",usersController.index);
 router.post("/login", loginValidation,usersController.login)
 
+router.post("/logout", usersController.logout);
+
 router.get("/", usersController.detail);
 router.get("/edit", usersController.edit);
 

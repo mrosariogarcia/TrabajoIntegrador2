@@ -39,12 +39,15 @@
 			
 			<ul class="right-navbar">
 				<li><a href='/users/'>
-					<%- datosUsuario.usuario %><i class="fas fa-user"></i>
+
+					¡Qué bueno tenerte de nuevo, <strong><%= locals.user.usuario %></strong>!
+
 					</a>
 				</li>
 
+
 				<li>
-					<form action="/" method="GET">
+					<form action="/users/logout" method="POST">
 						<button class="logout" type="submit">
 							<a>
 							Cerrar sesión <i class="fas fa-sign-in-alt"></i>

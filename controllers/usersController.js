@@ -51,16 +51,12 @@ let usersController = {
     },
             
     index: function (req, res) {
+
         //Mostramos el form de login
         return res.render('login');
     },
 
     login: function (req, res, next) {
-
-        let user = {
-            email: req.body.email,
-            contrasena: bcrypt.hashSync(req.body.contrasena, 10),
-        };
 
         //Resultados de las validaciones de login
         const resultValidation = validationResult(req);
@@ -70,12 +66,17 @@ let usersController = {
 
             //console.log('Usuario a buscar:', user)
 
-            db.User.findOne({ where: { email: req.body.email } })
+            db.User.findOne({ where: { email: req.body.email } }) // FILTRO
+
                 .then(function (user) {
-                    console.log('Usuario logueado:', user)
+                    // console.log('Usuario logueado:', user)
 
                     if(user!=undefined){
+
+                        req.session.user = user
+                        console.log("Usuario en sesion:", req.session.user)
                         return res.redirect('/')
+
                     }
 
                     else{
@@ -96,6 +97,11 @@ let usersController = {
                 oldData: req.body
             });
         }    
+    },
+
+    logout: function(req, res, next){
+        req.session.destroy()
+        return res.redirect("/");
     },
 
     detail: function (req, res) {
