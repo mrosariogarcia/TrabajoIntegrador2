@@ -5,13 +5,13 @@ const bcryptjs = require("bcryptjs");
 const loginValidation = [
 
     body("email")
-        .notEmpty()
+        .notEmpty() // verifica que el campo no este vacio
         .withMessage("Debes completar tu Email")
-        .isEmail()
-        .withMessage("En formato de correo valido")
-        .custom(function (value, { req }) {
+        .isEmail() // verifica que sea un email valido
+        .withMessage("Debes escribir un formato de correo valido")
+        .custom(function(value, {req}){ // verifica que el email NO exista
             return db.User.findOne({
-                where: {email: value },
+                where: {email: value}, // usamos el atributo del campo input
             })
             .then(function(userToLogin){
                 if(!userToLogin){
@@ -22,26 +22,26 @@ const loginValidation = [
     
     body("contrasena")
         .notEmpty()
-        .withMessage("Es un campo obligatorio, debes completar una constrasena")
-        .custom(function (value, { req }) {
-
+        .withMessage("Es un campo obligatorio, debes completar una constraseña")
+        .custom(function (value, {req}) { // desestructuramos 'req'
+            
             return db.User.findOne({
-                where: {email: req.body.email},
+                where: {email: req.body.email}, // accedemos al request
             })
 
             .then(function(user){
-
-                if(user != undefined){
-                    const contrasenaOk = bcryptjs.compareSync(value, user.contrasena);
-                    
+                if(!user){ // en la clase puso solo: if(user){ //  != undefined)
+                    const contrasena = user.contrasena
+                    const contrasenaOk = bcryptjs.compareSync(value, contrasena) // primer parametro: el valor que recibe contraseña ; segundo parametro: contrasena
+                    console.log("contrasenaOk:", contrasenaOk);
                     if(!contrasenaOk){
                         throw new Error("Contraseña incorrecta")
                     }
                 }
 
-                else{
-                    throw new Error("No existe el mail, registrese");
-                }
+                // else{
+                //     throw new Error("No existe el mail, registrese");
+                // }
             })
         }),
 

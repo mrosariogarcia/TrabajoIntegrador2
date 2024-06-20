@@ -1,3 +1,4 @@
+<!-- include HEAD -->
 <%- include("./partials/head") %>
 
     <body>
@@ -13,7 +14,7 @@
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
 					<h1 class="main-title"><%- datosUsuario.usuario %>
-						<a href="/users/edit">
+						<a href="/users/">
 							<i class="fas fa-cog"></i>
 						</a>
 					</h1>
@@ -22,9 +23,9 @@
 				<p class="mailUsuario"><%- datosUsuario.email %></p>
 				<div>
 					<ul class="">
-						<li>8 productos</li>
+						<li><%= relacionProductos.length %> productos</li>
 						<li>200 seguidores</li>
-						<li>300 comentarios</li>
+						<li><%= relacionComentarios.length %> comentarios</li>
 					</ul>
 				</div>
 			</div>
@@ -39,18 +40,18 @@
 				<h2 class="products-title">Mis productos</h2>
 			</div>
 			<!-- Show mis productos -->
-			<% for(let i=0; i < 4; i++) { %>
+			<% for(let i=0; i < relacionProductos.length; i++) { %>
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product">
+						<a href="/product/detalle/<%= relacionProductos[i].id_producto %>"> 
 							<figure class="product-box_image">
-								<img src="<%= lista[i].imagen%>" alt="<%= lista[i].producto%>">
+								<img src="<%= relacionProductos[i].imagen %>" alt="<%= relacionProductos[i].producto %>">
 							</figure>
 							<article class="product-box_data">
 								<h2>
-									<%= lista[i].producto %>
+									<%= relacionProductos[i].producto %>
 								</h2>
-								<p><%= lista[i].descripcion %></p>
+								<p><%= relacionProductos[i].descripcion %></p>
 								<p>Comentarios: 3 </p>
 							</article>
 						</a>

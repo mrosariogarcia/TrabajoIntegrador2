@@ -1,6 +1,7 @@
 /* importaríamos la base de datos */
 const { where } = require('sequelize');
 let db = require("../database/models");
+// requerimos express validator y validationResult:
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
@@ -62,49 +63,34 @@ let usersController = {
         const resultValidation = validationResult(req);
 
         //revisar que no haya errores en validations
-        if (resultValidation.isEmpty()){
-
-            //console.log('Usuario a buscar:', user)
-
-            db.User.findOne({ where: { email: req.body.email } }) // FILTRO
-
-                .then(function (user) {
-                    // console.log('Usuario logueado:', user)
-
-                    if(user!=undefined){
-
-                        req.session.user = user
-                      //  console.log("Usuario en sesion:", req.session.user)
-
-                        //RECORDAR USUARIO : cookie
-                        if(req.body.recordarme){
-                            res.cookie("userId", user.id_usuario, { maxAge: 1000 * 60 * 500})
-                        }
-                        return res.redirect('/')
-
-                    }
-
-                    else{
-                        return res.redirect('/'); 
-                    }
-
-                })
-
-                .catch(function (error) {
-                   // console.log(error);
-                });
-                
-        }
-
-
-
-        else{
-          //  console.log("resultValidation:", JSON.stringify(resultValidation, null, 4));
-            return res.render('login', {
+        if (!resultValidation.isEmpty()){
+            console.log("resultValidation:", JSON.stringify(resultValidation,null,4));
+            return res.render('login',{
                 errors: resultValidation.mapped(),
                 oldData: req.body
-            });
-        }    
+            })
+        } 
+        
+        else {
+            // buscamos el usuario que se quiere loguear
+            db.User.findOne({ 
+                where: [{ email: req.body.email }] 
+            }) // FILTRO
+            
+            .then(function (user) {
+                // seteamos la session con la info del usuario
+                req.session.user = user;
+
+                // si tildo recordarme => creamos la cookie
+                if (req.body.rememberme != undefined){
+                    res.cookie("userId", user.id_usuario, { maxAge: 1000 * 60 * 500})
+                }
+                return res.redirect('/');
+            })
+            .catch(function(error){
+                console.log(error)
+            })
+        }
     },
 
     logout: function(req, res, next){
@@ -114,11 +100,48 @@ let usersController = {
     },
 
     detail: function (req, res) {
-        return res.render('profile', {
-            datosUsuario: db.usuario,
-            lista: db.productos,
-            comentarios: db.comentarios
-        });
+        let id = req.params.id;
+        console.log('id: ', id);
+        const filtro = {
+            include: [
+                {association: 'productos'},
+                {association: 'comentarios'}
+            ],
+        }
+        console.log('filtro: ', filtro);
+        
+        db.User.findByPk(id, filtro)
+        .then(function(resultados){
+            let condition = false;
+            if(req.session.user != undefined && req.session.user.id == resultados.id){
+                condition = true
+            }
+            return res.render('profile', {
+                datosUsuario: resultados,
+                condition: condition,
+                relacionProductos: resultados.productos,
+                relacionComentarios: resultados.comentarios
+            });
+        })
+        
+        .catch(function(error){
+            return console.log(error);
+        })
+        
+        // db.Usuario.findByPk(id, {
+        //     include: [{association: 'productos'}]
+        // })
+        // .then(function(user){
+        //     if(user){
+        //         res.render('profile', {user: user})
+        //     }
+        // })
+        // .catch(function(error){
+        //     console.log(error);
+        //     let errors = {mensaje: 'Error al buscar el usuario'};
+        //     res.render('profile', {errors: errors})
+        // })
+               
     },
 
     edit: function (req, res) {

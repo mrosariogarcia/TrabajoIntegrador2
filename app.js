@@ -72,10 +72,10 @@ app.use(function(req, res, next) {
 
 });
 
+// RUTAS
 app.use('/', indexRouter);
 app.use('/product',productRouter);
 app.use('/users',usersRouter);
-
 
 
 // catch 404 and forward to error handler

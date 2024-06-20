@@ -18,7 +18,7 @@
 			<!-- Show the "ultimos" products -->
 			<form action="/users/login" method="POST" novalidate>
 
-				<label>USUARIO </label> <input type="email" name="email" placeholder="EMAIL" value="<%= locals.oldData && oldData.email ? oldData.email : null  %>"><br><br>
+				<label>EMAIL </label> <input type="email" name="email" placeholder="EMAIL" value="<%= locals.oldData && oldData.email ? oldData.email : null  %>"><br><br>
 				<!-- preguntamos en INPUT VALUES si hay errores en locals -->
 					<% if (locals.errors && errors.email) { %>
 						<div><%= errors.email.msg %></div>
