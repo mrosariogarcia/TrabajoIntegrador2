@@ -6,8 +6,7 @@
                 <a href="/" class="main-header_home-link">
 					<img src="/images/logo.png">
 				</a>
-                <p class="nombre">
-                    <a href='/'>OASIS</a></p>
+                <p class="nombre"><a href='/'>OASIS</a></p>
 
             </div>
 	
@@ -38,13 +37,9 @@
 			</ul>
 			
 			<ul class="right-navbar">
-				<li><a href='/users/profile/<%= locals.user.id_usuario %>'>
-
-					¡Qué bueno tenerte de nuevo, <strong><%= locals.user.usuario %></strong>!
-
-					</a>
+				<li>
+					<a href='/users/profile/<%= locals.user.id_usuario %>'><i class="fas fa-user"><%= locals.user.usuario %></i></a>
 				</li>
-
 
 				<li>
 					<form action="/users/logout" method="POST">
