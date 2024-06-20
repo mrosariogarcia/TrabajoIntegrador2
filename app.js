@@ -32,13 +32,13 @@ app.use(session ({
 }));
 
 app.use(function(req, res, next) {
-  console.log('Middleware de sesión');
-  console.log('req.session:', req.session);
+  //console.log('Middleware de sesión');
+  //console.log('req.session:', req.session);
 
   if (req.session.user !== undefined) {
     res.locals.user = req.session.user;
-    console.log('Entre a locals');
-    console.log(req.locals);
+   // console.log('Entre a locals');
+  //console.log(req.locals);
     return next()
   } 
   return next()
@@ -53,10 +53,10 @@ app.use(function(req, res, next) {
     //buscar en la base de datos el usuario con el ID de la Cookie
     db.User.findByPk(idCookie)
       .then(function(user){
-        console.log("middleware de la cookie")
+       // console.log("middleware de la cookie")
         req.session.user = user 
         // si el usuario eligio recordarse, ya va a estar logueado
-        console.log("en la cookie middleware")
+        //console.log("en la cookie middleware")
         res.locals.user = user //guardamos en locals tambien
       
       return next()
@@ -64,7 +64,7 @@ app.use(function(req, res, next) {
       })
 
       .catch(function (error) {
-        console.log("Error en cookies", error);
+        //console.log("Error en cookies", error);
       });
   }
 

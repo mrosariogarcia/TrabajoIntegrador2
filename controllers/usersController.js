@@ -74,7 +74,7 @@ let usersController = {
                     if(user!=undefined){
 
                         req.session.user = user
-                        console.log("Usuario en sesion:", req.session.user)
+                      //  console.log("Usuario en sesion:", req.session.user)
 
                         //RECORDAR USUARIO : cookie
                         if(req.body.recordarme){
@@ -91,7 +91,7 @@ let usersController = {
                 })
 
                 .catch(function (error) {
-                    console.log(error);
+                   // console.log(error);
                 });
                 
         }
@@ -99,7 +99,7 @@ let usersController = {
 
 
         else{
-            console.log("resultValidation:", JSON.stringify(resultValidation, null, 4));
+          //  console.log("resultValidation:", JSON.stringify(resultValidation, null, 4));
             return res.render('login', {
                 errors: resultValidation.mapped(),
                 oldData: req.body

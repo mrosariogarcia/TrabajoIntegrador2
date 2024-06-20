@@ -1,48 +1,55 @@
 <%- include("./partials/head") %>
 
-    <body>
-	<!-- HEADER -->
-        <%- include("./partials/headerNoLogueado") %>
+<body>
+    	<!-- HEADER -->
+		<% if (locals.user != undefined) { %>
+			<%- include("./partials/headerLogueado") %>
+		<% } else { %>
+			<%- include("./partials/headerNoLogueado") %>
+		<% } %>
+    <!-- Novedades -->
+    <div class="container products-wrapper">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="products-title">Resultados de búsqueda</h2>
+            </div>
+            
+            <!-- Show the "ultimos" products -->
+            <div class="container products-wrapper">
+                <div class="row">
+                    <% if (productos.length > 0) { %>
+                        <% for (let i = 0; i < productos.length; i++) { %>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <section class="product-box">
+                                    <a href="/product/detalle/<%= productos[i].id_producto %>">
+                                        <figure class="product-box_image">
+                                            <img src="<%= productos[i].imagen %>" alt="">
+                                        </figure>
+                                        <article class="product-box_data">
+                                            <h2><%= productos[i].producto %></h2>
+                                            <p><%= productos[i].descripcion %></p>
+                                            <p>Publicado por: 
+                                                <a href="/users/profile/<%= productos[i].usuario.id_usuario %>">
+                                                    <%= productos[i].usuario.usuario %>
+                                                </a>
+                                            </p>
+                                        </article>
+                                    </a>
+                                </section>
+                            </div>
+                        <% } %>
+                    <% } else { %>
+                        <div class="col-12"> <!-- falta css  -->
+                            <p>No hay resultados para su criterio de búsqueda.</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Resultados de búsqueda</h2>
-			</div>
-			<% if (error){ %>
-				<p> <%=error %></p>
-				<% } %>
-			<!-- Show the "ultimos" products -->
-
-			<div class="container products-wrapper">
-				<div class="row">
-					<% for (let i = 0; i < productos.length; i++) { %>
-						<div class="col-12 col-sm-6 col-lg-3">
-							<section class="product-box">
-								<a href="/product/<%= productos[i].id  %>">
-									<figure class="product-box_image">
-										<img src="/images/product/<%= productos[i].imagen  %>" alt="">
-									</figure>
-									<article class="product-box_data">
-
-										<h2><%= productos[i].producto %></h2>
-										<p><%= productos[i].descripcion %></p>
-										<p>Comentatios: <%= productos[i].comentarios.texto_comentario %></p>
-										<p>Cargado por: <a href="/users/profile/id/<%= productos[i].usuario.id_usuario %>"><%=productos[i].usuario.usuario %> </a></p>
-
-									</article>
-								</a>
-							</section>
-						</div>						
-					<% } %>
-				</div>
-			</div>
-			
-
-	<!-- FOOTER -->
-		<%- include("./partials/footer") %>
+    <!-- FOOTER -->
+    <%- include("./partials/footer") %>
 
 </body>
-
 </html>

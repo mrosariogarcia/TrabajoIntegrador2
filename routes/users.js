@@ -13,7 +13,7 @@ router.post("/login", loginValidation,usersController.login)
 
 router.post("/logout", usersController.logout);
 
-router.get("/", usersController.detail);
+router.get("/profile/:id", usersController.detail);
 router.get("/edit", usersController.edit);
 
 router.get("/product-add", usersController.productAdd)

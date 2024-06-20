@@ -39,7 +39,7 @@ CREATE TABLE comentarios(
 id_comentario INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 id_usuario INT UNSIGNED,
 id_producto INT UNSIGNED,
-textoComentario TEXT,
+texto_comentario TEXT,
 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 deletedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -71,7 +71,7 @@ VALUES
 (DEFAULT,5,'Modelo Capital','/images/products/Anteojos10.png','Resalta tu look con estos anteojos imprescindibles.');
 
 -- Inserción de comentarios
-INSERT INTO comentarios (id_comentario,id_usuario,id_producto, textoComentario)
+INSERT INTO comentarios (id_comentario,id_usuario,id_producto, texto_comentario)
 VALUES 
 (DEFAULT,1, 1, '¡Estos anteojos son el toque final perfecto para cualquier look!'),
 (DEFAULT,2, 1, 'Ideal precio-calidad. Definitivamente los recomendaría'),

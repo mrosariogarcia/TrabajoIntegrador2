@@ -14,6 +14,7 @@ let productController = {
 
     search: function (req, res) {
         let busqueda = req.query.search;
+        console.log(busqueda)
         let filtro = {
             where: {
                 [Op.or]: [
@@ -23,44 +24,52 @@ let productController = {
             },
             order: [["createdAt", "DESC"]],
             include: [
+                { association: 'usuario' },
                 { association: 'comentarios' },
-                { association: 'usuario' }
             ]
         };
 
         db.Product.findAll(filtro)
-            .then(function (results) {
-                return res.render("search-results", { productos: results });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },
-
+        .then(function (results) {
+            console.log(JSON.stringify(results, null, 2))
+            return res.render("search-results", { productos: results, buscado: busqueda });
+        })
+        .catch(function (error) {
+            console.log(error);
+            return res.render('search-results', { productos: [], buscado: busqueda });
+        });
+},
     detalle: function (req, res) {
-        let idEnviado = req.params.id;
-        let productoEnviado = req.params.producto;
-        let detalleProducto = [];
+        let id = req.params.id;
 
-        for (let i = 0; i < db.products.length; i++) {
-            let idProducto = db.productos[i].id;
-            if (idEnviado == idProducto) {
-                detalleProducto.push(db.productos[i]);
-            }
-        }
-
-        if (detalleProducto.length >= 1) {
-            return res.render('product', {
-                mensaje: `Éste es el detalle del producto ${productoEnviado}.`,
-                info: detalleProducto
-            });
-        } else {
-            return res.render('product', {
-                mensaje: `No encontramos detalle del producto ${productoEnviado}.`,
-                info: detalleProducto
-            });
-        }
+        db.Product.findByPk(id, {
+            // agregamos includes de generos y actores
+            include: [
+                { association: 'usuario' },
+                { association: 'comentarios', include:[ { association: 'user' }] },
+            ]
+        })
+            .then(data => {
+                if (req.session.user != undefined && req.session.user.id == results.usuario.id) {
+                    si = true;
+                }
+                else{ si=false}
+            console.log("coments: ", JSON.stringify(data.comentarios,null, 4))
+                return res.render('product', { resultado: data, comentarios: data.comentarios,si:si});
+            })
+            .catch(error => {
+                console.log(error);
+            })
     },
+
+
+
+
+
+
+
+
+
 
     agregar: function (req, res) {
         console.log(req);
