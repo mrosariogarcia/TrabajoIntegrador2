@@ -56,6 +56,7 @@ detalle: function (req, res) {
             }
             console.log("data: ", JSON.stringify(data, null, 4));
             console.log("coments: ", JSON.stringify(data.comentarios, null, 4));
+            console.log('data: ', data);
             return res.render('product', { resultado: data, comentarios: data.comentarios, si: si });
         })
         .catch(error => {
