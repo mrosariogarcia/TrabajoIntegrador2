@@ -1,0 +1,39 @@
+<%- include("./partials/head") %>
+
+    <body>
+	<!-- HEADER -->
+        <%- include("./partials/headerLogueado") %>
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Agregar productos</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<form action="/product/add" method="POST"> <!-- aca antes decia login.html -->
+				<label>IMAGEN  </label><input type="file" name="imagen" placeholder="FOTO DE PRODUCTO" value="<%= locals.OldProduct && OldProduct.imagen ? OldProduct.imagen : null  %>"><br><br>
+				<% if (locals.errors && errors.imagen) { %>
+					<div><%= errors.imagen.msg %></div>
+				<% } %>
+				
+				<label>NOMBRE DE PRODUCTO  </label><input type="text" name="producto" placeholder="NOMBRE PRODUCTO" value="<%= locals.OldProduct && OldProduct.producto ? OldProduct.producto : null  %>">><br><br>
+				<% if (locals.errors && errors.producto) { %>
+					<div><%= errors.producto.msg %></div>
+				<% } %>
+				
+				<label>DESCRIPCION  </label><input type="text" name="descripcion" placeholder="DESCRIPCION PRODUCTO"value="<%= locals.OldProduct && OldProduct.descripcion ? OldProduct.descripcion : null  %>">><br><br>
+				<% if (locals.errors && errors.descripcion) { %>
+					<div><%= errors.descripcion.msg %></div>
+				<% } %>
+				
+				<label>FECHA DE CARGA  </label><input type="date" name="createdAt" placeholder="FECHA DE CARGA"><br><br>
+				<button type="submit"> AGREGAR PRODUCTO </button>
+			</form>
+
+
+	<!-- FOOTER -->
+		<%- include("./partials/footer") %>
+</body>
+
+</html>

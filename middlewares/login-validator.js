@@ -33,7 +33,7 @@ const loginValidation = [
                 if(!user){ // en la clase puso solo: if(user){ //  != undefined)
                     const contrasena = user.contrasena
                     const contrasenaOk = bcryptjs.compareSync(value, contrasena) // primer parametro: el valor que recibe contraseña ; segundo parametro: contrasena
-                    console.log("contrasenaOk:", contrasenaOk);
+                    //console.log("contrasenaOk:", contrasenaOk);
                     if(!contrasenaOk){
                         throw new Error("Contraseña incorrecta")
                     }

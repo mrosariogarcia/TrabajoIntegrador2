@@ -25,7 +25,7 @@ let usersController = {
         //guardar el usuario en la db
         const errors = validationResult(req);
         if (errors.isEmpty()) {
-            console.log('Datos del usuario:', req.body)
+            //console.log('Datos del usuario:', req.body)
             let user = {
                 email: req.body.email,
                 usuario: req.body.usuario,
@@ -34,10 +34,10 @@ let usersController = {
                 dni: req.body.dni,
                 fotoDePerfil: req.body.fotoDePerfil
             }
-            console.log('Usuario a crear:', user)
+            //console.log('Usuario a crear:', user)
             db.User.create(user)
                 .then(function (user) {
-                    console.log('Nuevo usuario creado:', user)
+                    //console.log('Nuevo usuario creado:', user)
                     return res.redirect('/users/login') // le tenes que pasar la ruta
 
                 })
@@ -52,7 +52,6 @@ let usersController = {
     },
             
     index: function (req, res) {
-
         //Mostramos el form de login
         return res.render('login');
     },
@@ -60,13 +59,13 @@ let usersController = {
     login: function (req, res, next) {
 
         //Resultados de las validaciones de login
-        const resultValidation = validationResult(req);
+        const errorlogin = validationResult(req);
 
         //revisar que no haya errores en validations
-        if (!resultValidation.isEmpty()){
-            console.log("resultValidation:", JSON.stringify(resultValidation,null,4));
+        if (!errorlogin.isEmpty()){
+            //console.log("errorlogin:", JSON.stringify(errorlogin,null,4));
             return res.render('login',{
-                errors: resultValidation.mapped(),
+                errors: errorlogin.mapped(),
                 oldData: req.body
             })
         } 
@@ -101,14 +100,14 @@ let usersController = {
 
     detail: function (req, res) {
         let id = req.params.id;
-        console.log('id: ', id);
+        //console.log('id: ', id);
         const filtro = {
             include: [
                 {association: 'productos'},
                 {association: 'comentarios'}
             ],
         }
-        console.log('filtro: ', filtro);
+        //console.log('filtro: ', filtro);
         
         db.User.findByPk(id, filtro)
         .then(function(resultados){
@@ -143,18 +142,13 @@ let usersController = {
         // })
                
     },
-
+    
     edit: function (req, res) {
         return res.render('profile-edit', {
             datosUsuario: db.usuario
         });
     },
 
-    productAdd: function (req, res) {
-        return res.render('product-add', {
-            datosUsuario: db.usuario
-        });
-    }
 };
 
 module.exports = usersController;

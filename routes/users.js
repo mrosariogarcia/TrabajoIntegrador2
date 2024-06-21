@@ -16,7 +16,4 @@ router.post("/logout", usersController.logout);
 router.get("/profile/:id", usersController.detail);
 router.get("/edit", usersController.edit);
 
-router.get("/product-add", usersController.productAdd)
-
-
 module.exports = router;
