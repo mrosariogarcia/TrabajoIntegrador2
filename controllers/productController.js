@@ -82,6 +82,7 @@ comentario: function(req, res) {
                 { association: 'comentarios', include: [{ association: 'user' }] },
             ]
         })
+
         .then(data => {
             return res.render('product', {
                 resultado: data,
@@ -122,21 +123,22 @@ comentario: function(req, res) {
 },
         
     store: function (req, res) {
-        console.log('Solicitud recibida para registrar producto');
+        //console.log('Solicitud recibida para registrar producto');
     
-        const error = validationResult(req);
-        if (error.isEmpty()) {
+        const errors = validationResult(req);
+        if (errors.isEmpty()) {
         
-            console.log("Usuario en session", req.session)
+            //console.log("Usuario en session", req.session)
             let id_usuario = req.session.user.id_usuario
+            //console.log(id_usuario)
 
-            console.log('Datos del producto:', req.body)
+            //console.log('Datos del producto:', req.body)
             //guardar el usuario en la db
             let newproduct = {
                 imagen: req.body.imagen,
                 producto: req.body.producto,
                 descripcion: req.body.descripcion,
-                userId: id_usuario // Guardar ID del usuario en el producto
+                id_usuario: id_usuario // Guardar ID del usuario en el producto
             }
 
             console.log('Producto a crear:', newproduct)
@@ -154,8 +156,10 @@ comentario: function(req, res) {
         }
 
         else{
-            console.log('Errores de validación:', error.mapped());
-            return res.render('store', { error: error.mapped(), OldProduct: req.body });
+            console.log('Errores de validación:', errors.mapped());
+            return res.render('store', {
+                 errors: errors.mapped(), 
+                 OldProduct: req.body });
         }
         
 },
