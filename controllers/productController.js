@@ -43,7 +43,7 @@ let productController = {
 },
     detalle: function (req, res) {
         let id = req.params.id;
-
+        
         db.Product.findByPk(id, {
             // agregamos includes de generos y actores
             include: [
@@ -72,9 +72,12 @@ let productController = {
         
     store: function (req, res) {
         console.log('Solicitud recibida para registrar producto');
-        
+    
         const error = validationResult(req);
         if (error.isEmpty()) {
+        
+            console.log("Usuario en session", req.session)
+            let id_usuario = req.session.user.id_usuario
 
             console.log('Datos del producto:', req.body)
             //guardar el usuario en la db
@@ -82,10 +85,12 @@ let productController = {
                 imagen: req.body.imagen,
                 producto: req.body.producto,
                 descripcion: req.body.descripcion,
+                userId: id_usuario // Guardar ID del usuario en el producto
             }
 
             console.log('Producto a crear:', newproduct)
-            console.log("Usuario en session", req.session)
+
+
             db.Product.create(newproduct)
                 .then(function(newproduct){
                     console.log(newproduct)
@@ -99,7 +104,7 @@ let productController = {
 
         else{
             console.log('Errores de validación:', error.mapped());
-            return res.render('register', { error: error.mapped(), OldProduct: req.body });
+            return res.render('store', { error: error.mapped(), OldProduct: req.body });
         }
         
 },
