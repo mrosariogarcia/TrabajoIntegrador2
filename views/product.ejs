@@ -11,9 +11,9 @@
     <!-- product detail -->
     <div class="container products-wrapper">
         <div class="d-flex align-items-center">
-            <% if (si) { %>
+            <% if (locals.user) { %>
                 <p class="product-detail-description editar">
-                    <a href="/product/add">Editar</a>
+                    <a href="/users/product-add">Editar</a>
                 </p>
             <% } %>
         </div>
@@ -42,29 +42,36 @@
                     <section class="comments">
                         <% for(let i = 0; i < comentarios.length; i++) { %>
                             <article class="pp">
-                                <img src="<%= comentarios[i].user.fotoDePerfil %>" alt="">
+                                <img src="<%= comentarios[i].user?.fotoDePerfil %>" alt="">
+
                                 <div class="data">
                                     <p class="user">
-                                        <strong>
-                                            <a href="/users/profile/<%= comentarios[i].id_usuario %>">
-                                                <%= comentarios[i].user.usuario %>
-                                            </a>
-                                        </strong>
+                                        <% if (comentarios[i].user) { %>
+                                            <strong>
+                                                <a href="/users/profile/<%= comentarios[i].id_usuario %>">
+                                                    <%= comentarios[i].user.usuario %>
+                                                </a>
+                                            </strong>
+                                        <% } %>
+                                        
                                         <%= comentarios[i].texto_comentario %>
                                     </p>
                                 </div>
                             </article>
                         <% } %>
                     </section>
-                    <% if (locals.user != undefined) { %>
-                        <form class="form" action="/product/comentario/<%= locals.id_usuario  %>" method="post">
-                            <input class="form-input" type="text" name="comentario" placeholder="Agregar comentario">
+                    <% if (locals.user) { %>
+                        <form class="form" action="/product/comentario/<%= resultado.id_producto %>" method="post">
+                            <input class="form-input" type="text" name="comentario" placeholder="Agregar comentario" value="<%= oldData ? oldData.comentario : '' %>">
+                            <% if (errores && errores.comentario) { %>
+                                <div class="error-msg"><%= errores.comentario.msg %></div>
+                            <% } %>
                             <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                         </form>
                     <% } else { %>
-                        <p>Debes estar logueado para comentar</p> <!-- le falta css -->
+                        <p>Debes estar logueado para comentar</p>
                     <% } %>
-                    <hr>
+                    <br>
                     
 
                     
