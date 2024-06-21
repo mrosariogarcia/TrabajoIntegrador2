@@ -11,5 +11,6 @@ router.get('/add', productController.add);
 router.post('/add', productController.store);
 
 router.post('/comentario/:id',comentarioValidations,productController.comentario);
+router.post('/borrar/:id',productController.borrar);
 
 module.exports = router;

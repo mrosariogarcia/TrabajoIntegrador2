@@ -59,7 +59,7 @@ let productController = {
                 
                 //console.log("data: ", JSON.stringify(data, null, 4));
                 //console.log("coments: ", JSON.stringify(data.comentarios, null, 4));
-                //console.log('data: ', data);
+                console.log('data: ', data);
                 return res.render('product', { resultado: data, comentarios: data.comentarios, oldData: req.body, errores: {} });
             })
             .catch(error => {
@@ -163,6 +163,33 @@ comentario: function(req, res) {
         }
         
 },
+borrar: function (req, res) {
+    console.log('entraste a la funcion');
+    let productABorrar = req.params.id;
+
+    db.Product.findByPk(productABorrar).then((data) => {
+        if (req.session.user.id_usuario != data.id_usuario) {
+            return res.redirect('/');
+        }
+        db.Comentario.destroy({
+            where: { id_producto: productABorrar }
+        })
+        db.Product.destroy({
+            where: { id_producto: productABorrar } 
+        })
+            .then(() => {
+                return res.redirect("/");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    })
+        .catch((error) => {
+            console.log(error);
+        });
+},
+
 };
 
 module.exports = productController;

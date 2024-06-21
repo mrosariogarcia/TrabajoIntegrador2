@@ -72,7 +72,13 @@
                         <p>Debes estar logueado para comentar</p>
                     <% } %>
                     <br>
-                    
+                    <% if (locals.user.id_usuario=== resultado.id_usuario) { %>
+                        <section class="borrar">
+                            <form class="form" action="/product/borrar/<%= resultado.id_producto %>" method="POST">
+                                <button type="submit" class="buy-now-button">BORRAR PRODUCTO</button>
+                            </form>
+                        </section>
+                    <% } %>
 
                     
 
