@@ -48,23 +48,74 @@ let productController = {
             // agregamos includes de generos y actores
             include: [
                 { association: 'usuario' },
-                { association: 'comentarios', include:[ { association: 'user' }] },
+                { 
+                    association: 'comentarios', 
+                    include: [{ association: 'user' }], 
+                    order: [['createdAt', 'DESC']] // Ordenar comentarios por fecha de creación descendente
+                },
             ]
         })
             .then(data => {
-                let si = false;
-                if (req.session.user != undefined && req.session.user.id == data.usuario.id) {
-                    si = true;
-                }
+                
                 //console.log("data: ", JSON.stringify(data, null, 4));
                 //console.log("coments: ", JSON.stringify(data.comentarios, null, 4));
                 //console.log('data: ', data);
-                return res.render('product', { resultado: data, comentarios: data.comentarios, si: si });
+                return res.render('product', { resultado: data, comentarios: data.comentarios, oldData: req.body, errores: {} });
             })
             .catch(error => {
                 console.log(error);
             })
 },
+comentario: function(req, res) {
+    // Verificar si el usuario está autenticado
+    if (!req.session.user) {
+        return res.redirect('/login');
+    }
+
+    let errores = validationResult(req);
+    if (!errores.isEmpty()) {
+        let id = req.params.id;
+
+        db.Product.findByPk(id, {
+            include: [
+                { association: 'usuario' },
+                { association: 'comentarios', include: [{ association: 'user' }] },
+            ]
+        })
+        .then(data => {
+            return res.render('product', {
+                resultado: data,
+                comentarios: data.comentarios,
+                errores: errores.mapped(),
+                oldData: req.body
+            });
+            
+        })
+
+        .catch(error => {
+            console.log(error);
+        });
+    } else {
+        let id_producto = req.params.id;
+        let textoComentario = req.body.comentario;
+        let id_usuario = req.session.user.id_usuario;
+        console.log('usuario id',id_usuario)
+
+        db.Comentario.create({
+            id_usuario: id_usuario,
+            id_producto: id_producto,
+            texto_comentario: textoComentario
+        })
+        .then(comentario => {
+            res.redirect(`/product/detalle/${id_producto}`);
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).send('Error interno del servidor');
+        });
+    }
+},
+
 
     add: function (req, res) {
         return res.render('add');
