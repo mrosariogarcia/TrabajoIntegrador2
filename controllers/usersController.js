@@ -21,7 +21,7 @@ let usersController = {
     },
     
     store: function (req, res) {
-        console.log('Solicitud recibida para registrar usuario');
+        //console.log('Solicitud recibida para registrar usuario');
         //guardar el usuario en la db
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -144,10 +144,26 @@ let usersController = {
     },
     
     edit: function (req, res) {
-        return res.render('profile-edit', {
-            datosUsuario: db.usuario
-        });
+
+        if (req.session.user != undefined) {
+            let id = req.session.user.id;
+
+            // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
+            db.Usuario.findByPk(id)
+            .then(function(results){
+                return res.render('edit', {title: 'Profile Edit', usuario: results});
+            })
+            .catch(function(error){
+                console.log(error);
+            });    
+        }
+        else {
+            return res.redirect("/users/login");
+        }
+
     },
+
+    update:function (req, res) {}
 
 };
 

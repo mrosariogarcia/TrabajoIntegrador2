@@ -1,6 +1,7 @@
 const { body } = require("express-validator")
 const db = require('../database/models')
-const registerValidation = [       
+const editValidation = [     
+
     body("email")
         .notEmpty().withMessage('El campo Mail es obligatorio.')
         .isEmail().withMessage("Debes escribir un formato de correo valido")
@@ -27,6 +28,4 @@ const registerValidation = [
             
 ]
 
-
-
-module.exports = registerValidation
+module.exports = editValidation
