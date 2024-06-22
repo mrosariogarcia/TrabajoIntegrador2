@@ -1,12 +1,13 @@
 <%- include("./partials/head") %>
 
 <body>
-    <!-- HEADER -->
-    <% if (locals.user != undefined) { %>
-        <%- include("./partials/headerLogueado") %>
-    <% } else { %>
-        <%- include("./partials/headerNoLogueado") %>
-    <% } %>
+    <!-- Header -->
+	<% if (locals.user != undefined) { %>
+		<%- include("./partials/headerLogueado") %> 
+	<% } else { %>
+		<%- include("./partials/headerNoLogueado") %>
+	<% } %>
+	<!-- /Header -->
 
     <!-- product detail -->
     <div class="container products-wrapper">
