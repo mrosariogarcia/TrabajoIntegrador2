@@ -146,12 +146,13 @@ let usersController = {
     edit: function (req, res) {
 
         if (req.session.user != undefined) {
-            let id = req.session.user.id;
+            let idEditar = req.session.user.id_usuario;
+            console.log(idEditar)
 
             // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
-            db.Usuario.findByPk(id)
-            .then(function(results){
-                return res.render('edit', {title: 'Profile Edit', usuario: results});
+            db.User.findByPk(idEditar)
+            .then(function(usuarioE){
+                return res.render('edit', {title: 'Profile Edit', usuario: usuarioE});
             })
             .catch(function(error){
                 console.log(error);
@@ -163,7 +164,37 @@ let usersController = {
 
     },
 
-    update:function (req, res) {}
+    update:function (req, res) {
+
+        let errorsEdit = validationResult(req);
+
+        if (errorsEdit.isEmpty()) {
+
+            let filtrado = {
+                where: {
+                id: req.session.user.id
+                }
+            } 
+
+            let usuarioEdit = {
+                email: form.email,
+                usuario: form.usuario,
+                contrasena: bcrypt.hashSync(form.contrasena, 10),
+                fechaDeNacimiento: form.fechaDeNacimiento,
+                dni: form.dni,
+                fotoDePerfil: form.fotoDePerfil
+            }
+    
+            db.Usuario.update(usuarioEdit, filtrado)
+            .then((result) => {
+                return res.redirect("/users/login")
+            })
+            .catch((err) => {
+                return console.log(err);
+            });       
+        } 
+
+    }
 
 };
 
