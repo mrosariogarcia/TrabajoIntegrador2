@@ -21,7 +21,7 @@ let usersController = {
     },
     
     store: function (req, res) {
-        console.log('Solicitud recibida para registrar usuario');
+        //console.log('Solicitud recibida para registrar usuario');
         //guardar el usuario en la db
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -144,10 +144,57 @@ let usersController = {
     },
     
     edit: function (req, res) {
-        return res.render('profile-edit', {
-            datosUsuario: db.usuario
-        });
+
+        if (req.session.user != undefined) {
+            let idEditar = req.session.user.id_usuario;
+            console.log(idEditar)
+
+            // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
+            db.User.findByPk(idEditar)
+            .then(function(usuarioE){
+                return res.render('edit', {title: 'Profile Edit', usuario: usuarioE});
+            })
+            .catch(function(error){
+                console.log(error);
+            });    
+        }
+        else {
+            return res.redirect("/users/login");
+        }
+
     },
+
+    update:function (req, res) {
+
+        let errorsEdit = validationResult(req);
+
+        if (errorsEdit.isEmpty()) {
+
+            let filtrado = {
+                where: {
+                id: req.session.user.id
+                }
+            } 
+
+            let usuarioEdit = {
+                email: form.email,
+                usuario: form.usuario,
+                contrasena: bcrypt.hashSync(form.contrasena, 10),
+                fechaDeNacimiento: form.fechaDeNacimiento,
+                dni: form.dni,
+                fotoDePerfil: form.fotoDePerfil
+            }
+    
+            db.Usuario.update(usuarioEdit, filtrado)
+            .then((result) => {
+                return res.redirect("/users/login")
+            })
+            .catch((err) => {
+                return console.log(err);
+            });       
+        } 
+
+    }
 
 };
 

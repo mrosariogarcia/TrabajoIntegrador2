@@ -7,6 +7,7 @@ const loginValidation = [
     body("email")
         .notEmpty() // verifica que el campo no este vacio
         .withMessage("Debes completar tu Email")
+        .bail()
         .isEmail() // verifica que sea un email valido
         .withMessage("Debes escribir un formato de correo valido")
         .custom(function(value, {req}){ // verifica que el email NO exista
@@ -24,25 +25,31 @@ const loginValidation = [
         .notEmpty()
         .withMessage("Es un campo obligatorio, debes completar una constraseña")
         .custom(function (value, {req}) { // desestructuramos 'req'
+            console.log('value: ', value);
             
             return db.User.findOne({
                 where: {email: req.body.email}, // accedemos al request
             })
 
             .then(function(user){
-                if(!user){ // en la clase puso solo: if(user){ //  != undefined)
-                    const contrasena = user.contrasena
-                    const contrasenaOk = bcryptjs.compareSync(value, contrasena) // primer parametro: el valor que recibe contraseña ; segundo parametro: contrasena
-                    //console.log("contrasenaOk:", contrasenaOk);
-                    if(!contrasenaOk){
-                        throw new Error("Contraseña incorrecta")
-                    }
-                }
+                if(user != undefined){ // en la clase puso solo: if(user){ 
+                    const password = user.contrasena;
+                    console.log('password: ', password);
+                    const passwordOk = bcryptjs.compareSync(value, password);
+                    console.log('passwordOk: ', passwordOk);
 
-                // else{
-                //     throw new Error("No existe el mail, registrese");
-                // }
+                    if (!passwordOk){
+                        throw new Error('Contraseña incorrecta')
+                    }
+                }         
+                else{
+                    throw new Error('No existe el mail, registrese')
+                }
             })
+            // .catch(function(error){
+            //     console.log("Error en la validación de la contraseña: ", error);
+            //     throw new Error('Error en la validación de la contraseña')
+            // })
         }),
 
 ]

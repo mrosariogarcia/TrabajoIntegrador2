@@ -1,0 +1,64 @@
+<%- include("./partials/head") %>
+
+    <body>
+	<!-- HEADER -->
+        <%- include("./partials/headerLogueado") %>
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Editar mi perfil</h2>
+			</div>
+
+			<form action="/users/edit" method="POST">
+
+					<label>EMAIL </label><input type="email" name="email" placeholder="EMAIL"  value="<%= locals.old !== undefined && old.email ? old.email : "" %>"  required> <br><br>
+					<% if (locals.errors && errors.email) { %>
+						<p class="feedback"><%= errors.email.msg %></p>
+					  <% } %>
+	
+					<label>NOMBRE DE USUARIO </label><input type="text" name="usuario"
+						placeholder="USUARIO"  value="<%= locals.old !== undefined && old.usuario ? old.usuario : "" %>" ><br><br>
+						<% if (locals.errors && errors.usuario) { %>
+							<p class="feedback"><%= errors.usuario.msg %></p>
+						  <% } %>	
+	
+					<label> NUEVA CONTRASEÑA </label><input type="password" name="contrasena"
+						placeholder="CONTRASEÑA" value="<%= locals.old !== undefined && old.contrasena? old.contrasena : "" %>"><br><br>
+						<% if (locals.errors && errors.contrasena) { %>
+							<p class="feedback"><%= errors.contrasena.msg %></p>
+						  <% } %>
+						
+					<label>FECHA DE NACIMIENTO </label><input type="date" name="fechaDeNacimiento"
+						placeholder="FECHA NACIMIENTO" ><br><br>
+						<% if (locals.errors && errors.fechaDeNacimiento) { %>
+							<p class="feedback"><%= errors.fechaDeNacimiento.msg %></p>
+						  <% } %>
+						
+					<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni"
+						placeholder="NRO DOCUMENTO" >
+					<br><br>
+					<% if (locals.errors && errors.dni) { %>
+						<p class="feedback"><%= errors.dni %></p>
+					  <% } %>
+					
+					<label>FOTO DE PERFIL </label><input type="file" name="fotoDePerfil"
+						placeholder="FOTO DE PERFIL" ><br><br>
+						<% if (locals.errors && errors.fotoDePerfil) { %>
+							<p class="feedback"><%= errors.fotoDePerfil %></p>
+						  <% } %>
+
+				<button type="submit"> GUARDAR  </button><br><br>
+			</form>
+
+			<div class="img-container offset-3 col-2">
+				<img src="<%= locals.user.fotoDePerfil %>" alt="foto de perfil" class="foto-perfil">
+			</div>
+
+
+	<!-- FOOTER -->
+		<%- include("./partials/footer") %>
+</body>
+
+</html>
