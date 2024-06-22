@@ -43,9 +43,7 @@ let productController = {
 },
     detalle: function (req, res) {
         let id = req.params.id;
-        
-        db.Product.findByPk(id, {
-            // agregamos includes de generos y actores
+        let filtro = {
             include: [
                 { association: 'usuario' },
                 { 
@@ -53,20 +51,59 @@ let productController = {
                     include: [{ association: 'user' }], 
                     order: [['createdAt', 'DESC']] // Ordenar comentarios por fecha de creación descendente
                 },
-            ]
-        })
-            .then(data => {
+            ],
+            order: [[{ model: db.Comentario, as: 'comentarios' }, 'createdAt', 'DESC']]
+        }
+        let condition = false;
+
+        db.Product.findByPk(id, filtro)
+            .then(function(rta){
+                if (!rta){
+                    return res.status(404).send('Producto no encontrado')
+                }
+                if (req.session.user != undefined && req.session.user.id_usuario == rta.id){
+                    condition = true;
+                }
+                res.render('product', {
+                    resultado: rta,
+                    comentarios: rta.comentarios,
+                    condition: condition,
+                    user: req.session.user,
+                    oldData: req.body, 
+                    errores: {}
+                });
+            })
+            .catch(function(error){
+                console.log('error: ', error);
+                return res.status(500).send('Error en el servidor')
+            })
+
+
+        // // como tenia antes
+        // db.Product.findByPk(id, {
+        //     // agregamos includes de generos y actores
+        //     include: [
+        //         { association: 'usuario' },
+        //         { 
+        //             association: 'comentarios', 
+        //             include: [{ association: 'user' }], 
+        //             order: [['createdAt', 'DESC']] // Ordenar comentarios por fecha de creación descendente
+        //         },
+        //     ], 
+        //     // order: [[{model: db.Comentarios, as: 'comentarios'}, 'createdAt', 'DESC']]
+        // })
+        //     .then(data => {
                 
-                //console.log("data: ", JSON.stringify(data, null, 4));
-                //console.log("coments: ", JSON.stringify(data.comentarios, null, 4));
-                console.log('data: ', data);
-                return res.render('product', { resultado: data, comentarios: data.comentarios, oldData: req.body, errores: {} });
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        //         //console.log("data: ", JSON.stringify(data, null, 4));
+        //         //console.log("coments: ", JSON.stringify(data.comentarios, null, 4));
+        //         console.log('data: ', data);
+        //         return res.render('product', { resultado: data, comentarios: data.comentarios, oldData: req.body, errores: {} });
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     })
 },
-comentario: function(req, res) {
+    comentario: function(req, res) {
     // Verificar si el usuario está autenticado
     if (!req.session.user) {
         return res.redirect('/login');
@@ -163,7 +200,7 @@ comentario: function(req, res) {
         }
         
 },
-borrar: function (req, res) {
+    borrar: function (req, res) {
     console.log('entraste a la funcion');
     let productABorrar = req.params.id;
 
