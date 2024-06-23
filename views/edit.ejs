@@ -8,7 +8,7 @@
 		<%- include("./partials/headerNoLogueado") %>
 	<% } %>
 	<!-- /Header -->
-	 
+
 	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -44,6 +44,7 @@
 					<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni"
 						placeholder="NRO DOCUMENTO" >
 					<br><br>
+					
 					<% if (locals.errors && errors.dni) { %>
 						<p class="feedback"><%= errors.dni %></p>
 					  <% } %>

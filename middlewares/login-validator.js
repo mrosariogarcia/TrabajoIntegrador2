@@ -40,7 +40,7 @@ const loginValidation = [
 
                     if (!passwordOk){
                         throw new Error('Contraseña incorrecta')
-                    }
+                    } 
                 }         
                 else{
                     throw new Error('No existe el mail, registrese')

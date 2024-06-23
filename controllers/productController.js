@@ -12,8 +12,7 @@ let productController = {
         return res.render('product', {
             info: db
         });
-    },
-
+},
     search: function (req, res) {
         let busqueda = req.query.search;
         //console.log(busqueda)
@@ -153,12 +152,9 @@ let productController = {
         });
     }
 },
-
-
     add: function (req, res) {
         return res.render('add');
-},
-        
+},      
     store: function (req, res) {
         //console.log('Solicitud recibida para registrar producto');
     
@@ -226,7 +222,66 @@ let productController = {
             console.log(error);
         });
 },
+edit: function (req, res) {
+    const resultValidation = validationResult(req);
+    let id_del_producto = req.params.id
 
-};
+    if(!resultValidation.isEmpty()){
+        console.log('resultValidation: ', JSON.stringify(resultValidation, null, 4));
+
+        return db.Products.findByPk(id_del_producto)
+            .then(function(prod){
+                res.render('product-edit', {
+                    prod: prod,
+                    errors: resultValidation.mapped(),
+                    oldData: req.body
+                });
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+    }
+    else{
+        let editar = {
+            imagen: req.body.imagen,
+            nomProducto: req.body.producto,
+            descripcionProducto: req.body.descripcion
+        }
+        db.Product.update(editar, {
+            where: {idProducto: id_del_producto}
+        })
+            .then(function(data){
+                res.redirect('/product/product-edit');
+            }) 
+            .catch(function(error){
+                console.log(error);
+            })
+    }
+}
+
+//     let id = req.params.id;
+//     let filtro = {
+//         include: [
+//             {association: usuario}
+//         ]
+//     };
+//     //VERIFICAR QUE SOLO EL USUARIO PUEDE EDITAR LOS PRODUCTOS QUE SUBE
+//     db.Product.findByPk(id, filtro)
+//         .then(function(rta){
+//             if(!rta){
+//                 return res.status(404).send('Producto no encontrado en edit')
+//             }
+//             res.render('product-edit', {
+//                 producto: rta
+//             })
+//         })
+//         .catch(function(error){
+//             console.log(error);
+//             res.status(500).send('Error en el servidor en edit')
+//         })
+// }
+
+}
+
 
 module.exports = productController;

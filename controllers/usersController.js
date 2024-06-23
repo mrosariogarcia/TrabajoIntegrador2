@@ -60,10 +60,10 @@ let usersController = {
 
         //Resultados de las validaciones de login
         const errorlogin = validationResult(req);
-
+      
         //revisar que no haya errores en validations
         if (!errorlogin.isEmpty()){
-            //console.log("errorlogin:", JSON.stringify(errorlogin,null,4));
+            // console.log("errorlogin: ", JSON.stringify(errorlogin,null,4));
             return res.render('login',{
                 errors: errorlogin.mapped(),
                 oldData: req.body
@@ -111,6 +111,7 @@ let usersController = {
         
         db.User.findByPk(id, filtro)
         .then(function(resultados){
+            console.log('resultados: ', resultados);
             let condition = false;
             if(req.session.user != undefined && req.session.user.id == resultados.id){
                 condition = true
@@ -144,7 +145,6 @@ let usersController = {
     },
     
     edit: function (req, res) {
-
         if (req.session.user != undefined) {
             let idEditar = req.session.user.id_usuario;
             console.log(idEditar)
@@ -152,7 +152,9 @@ let usersController = {
             // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
             db.User.findByPk(idEditar)
             .then(function(usuarioE){
-                return res.render('edit', {title: 'Profile Edit', usuario: usuarioE});
+                return res.render('edit', {
+                    title: 'Profile Edit', 
+                    usuario: usuarioE});
             })
             .catch(function(error){
                 console.log(error);
