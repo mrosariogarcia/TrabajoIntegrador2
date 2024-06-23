@@ -1,6 +1,7 @@
 const { body } = require("express-validator")
 const db = require('../database/models')
-const editValidation = [     
+
+const editValidations = [     
 
     body("email")
         .notEmpty().withMessage('El campo Mail es obligatorio.')
@@ -28,4 +29,4 @@ const editValidation = [
             
 ]
 
-module.exports = editValidation
+module.exports = editValidations;

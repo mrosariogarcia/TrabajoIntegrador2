@@ -100,15 +100,13 @@ let usersController = {
 
     detail: function (req, res) {
         let id = req.params.id;
-        //console.log('id: ', id);
         const filtro = {
             include: [
                 {association: 'productos'},
                 {association: 'comentarios'}
             ],
         }
-        //console.log('filtro: ', filtro);
-        
+       
         db.User.findByPk(id, filtro)
         .then(function(resultados){
             console.log('resultados: ', resultados);
@@ -127,21 +125,7 @@ let usersController = {
         .catch(function(error){
             return console.log(error);
         })
-        
-        // db.Usuario.findByPk(id, {
-        //     include: [{association: 'productos'}]
-        // })
-        // .then(function(user){
-        //     if(user){
-        //         res.render('profile', {user: user})
-        //     }
-        // })
-        // .catch(function(error){
-        //     console.log(error);
-        //     let errors = {mensaje: 'Error al buscar el usuario'};
-        //     res.render('profile', {errors: errors})
-        // })
-               
+         
     },
     
     edit: function (req, res) {
@@ -164,7 +148,7 @@ let usersController = {
 
     update:function (req, res) {
         const idUsuario = req.params.id;
-
+        
         db.User.update(
             {
                 email: req.body.email, 

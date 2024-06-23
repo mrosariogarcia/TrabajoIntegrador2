@@ -3,7 +3,7 @@ const router = express.Router();
 const usersController = require('../controllers/usersController');
 const registerValidation = require('../middlewares/register-validator')
 const loginValidation = require("../middlewares/login-validator");
-const editValidation = require('../middlewares/edit-validation')
+const editValidations = require('../middlewares/edit-validation')
 
 router.get("/register",usersController.register);
 router.post("/register",registerValidation,usersController.store)
@@ -17,7 +17,7 @@ router.get("/profile/:id", usersController.detail);
 
 
 router.get("/edit/:id", usersController.edit);
-router.post("/edit/:id", editValidation ,usersController.update);
+router.post("/edit/:id", editValidations ,usersController.update);
 
 
 module.exports = router;

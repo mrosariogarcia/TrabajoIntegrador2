@@ -46,10 +46,10 @@ const loginValidation = [
                     throw new Error('No existe el mail, registrese')
                 }
             })
-            // .catch(function(error){
-            //     console.log("Error en la validación de la contraseña: ", error);
-            //     throw new Error('Error en la validación de la contraseña')
-            // })
+            .catch(function(error){
+                console.log("Error en la validación de la contraseña: ", error);
+                throw new Error('Error en la validación de la contraseña')
+            })
         }),
 
 ]

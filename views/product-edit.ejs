@@ -20,17 +20,17 @@
 
                 <label>IMAGEN  </label><input type="file" name="imagen" placeholder="FOTO DE PRODUCTO" value="<%= producto.imagen  %>"><br><br>
 				<% if (locals.errors && errors.imagen) { %>
-					<div><%= errors.imagen.msg %></div>
+					<p class="feedback"><%= errors.imagen.msg %></p>
 				<% } %>
 				
 				<label>NOMBRE DE PRODUCTO  </label><input type="text" name="producto" placeholder="NOMBRE PRODUCTO" value="<%= producto.producto  %>"><br><br>
 				<% if (locals.errors && errors.producto) { %>
-					<div><%= errors.producto.msg %></div>
+					<p class="feedback"><%= errors.producto.msg %></p>
 				<% } %>
 				
 				<label>DESCRIPCION DEL PRODUCTO  </label><input type="text" name="descripcion" placeholder="DESCRIPCION"value="<%= producto.descripcion  %>"><br><br>
 				<% if (locals.errors && errors.descripcion) { %>
-					<div><%= errors.descripcion.msg %></div>
+					<p class="feedback"><%= errors.descripcion.msg %></p>
 				<% } %>
 				
 				<button type="submit"> EDITAR PRODUCTO </button>
