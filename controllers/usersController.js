@@ -32,7 +32,7 @@ let usersController = {
                 contrasena: bcrypt.hashSync(req.body.contrasena, 10),
                 fechaDeNacimiento: req.body.fechaDeNacimiento,
                 dni: req.body.dni,
-                fotoDePerfil: req.body.fotoDePerfil
+                fotoDePerfil: "/images/users/"+ req.body.fotoDePerfil
             }
             //console.log('Usuario a crear:', user)
             db.User.create(user)
@@ -145,56 +145,96 @@ let usersController = {
     },
     
     edit: function (req, res) {
-        if (req.session.user != undefined) {
-            let idEditar = req.session.user.id_usuario;
-            console.log(idEditar)
+        const idUsuario = req.params.id;
 
-            // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
-            db.User.findByPk(idEditar)
-            .then(function(usuarioE){
-                return res.render('edit', {
-                    title: 'Profile Edit', 
-                    usuario: usuarioE});
-            })
-            .catch(function(error){
-                console.log(error);
-            });    
-        }
-        else {
-            return res.redirect("/users/login");
-        }
+        db.User.findByPk(idUsuario)
+        .then(function(usuario){
+            if(!usuario){
+                return res.status(404).send('Usuario no encontrado');
+            }
+            res.render('edit', {usuario: usuario});
+            // console.log('user: ', user);
+        })
+        .catch(function(error){
+            console.log('error: ', error);
+            res.status(500).send('Error en el servidor')
+        })
+        // if (req.session.user != undefined) { // lo que tenia rochi
+        //     let idEditar = req.session.user.id_usuario;
+        //     console.log(idEditar)
+
+        //     // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
+        //     db.User.findByPk(idEditar)
+        //     .then(function(usuarioE){
+        //         return res.render('edit', {
+        //             title: 'Profile Edit', 
+        //             usuario: usuarioE});
+        //     })
+        //     .catch(function(error){
+        //         console.log(error);
+        //     });    
+        // }
+        // else {
+        //     return res.redirect("/users/login");
+        // }
 
     },
 
     update:function (req, res) {
+        const idUsuario = req.params.id;
 
-        let errorsEdit = validationResult(req);
+        db.User.update(
+            {
+                email: req.body.email, 
+                usuario: req.body.usuario, 
+                contrasena: req.body.contrasena, 
+                fechaDeNacimiento: req.body.fechaDeNacimiento, 
+                dni: req.body.dni, 
+                fotoDePerfil: req.body.fotoDePerfil,
+                recordarme: req.body.recordarme,
+                updatedAt: new Date() // Actualiza la columna updatedAt con la fecha actual
+            },
+            {where: {id_usuario: idUsuario}}
+        )
+        .then(function(){
+            res.redirect(`/users/profile/${idUsuario}`)
+        })
+        .catch(function(error){
+            console.log('error: ', error);
+            res.statys(500).send('Error en el servidor');
+        })
+        
+        // const {producto, descripcion, imagen} = req.body;
 
-        if (errorsEdit.isEmpty()) {
 
-            let filtrado = {
-                where: {
-                id: req.session.user.id
-                }
-            } 
 
-            let usuarioEdit = {
-                email: form.email,
-                usuario: form.usuario,
-                contrasena: bcrypt.hashSync(form.contrasena, 10),
-                fechaDeNacimiento: form.fechaDeNacimiento,
-                dni: form.dni,
-                fotoDePerfil: form.fotoDePerfil
-            }
+    //     let errorsEdit = validationResult(req); // lo que tenia rochi
+
+    //     if (errorsEdit.isEmpty()) {
+
+    //         let filtrado = {
+    //             where: {
+    //             id: req.session.user.id
+    //             }
+    //         } 
+
+    //         let usuarioEdit = {
+    //             email: form.email,
+    //             usuario: form.usuario,
+    //             contrasena: bcrypt.hashSync(form.contrasena, 10),
+    //             fechaDeNacimiento: form.fechaDeNacimiento,
+    //             dni: form.dni,
+    //             fotoDePerfil: form.fotoDePerfil
+    //         }
     
-            db.Usuario.update(usuarioEdit, filtrado)
-            .then((result) => {
-                return res.redirect("/users/login")
-            })
-            .catch((err) => {
-                return console.log(err);
-            });       
-        } 
+    //         db.Usuario.update(usuarioEdit, filtrado)
+    //         .then((result) => {
+    //             return res.redirect("/users/login")
+    //         })
+    //         .catch((err) => {
+    //             return console.log(err);
+    //         });       
+    //     } 
 
     }
 

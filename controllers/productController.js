@@ -57,6 +57,7 @@ let productController = {
 
         db.Product.findByPk(id, filtro)
             .then(function(rta){
+                // console.log('rta: ', JSON.stringify(rta, null, 2));
                 if (!rta){
                     return res.status(404).send('Producto no encontrado')
                 }
@@ -168,7 +169,7 @@ let productController = {
             //console.log('Datos del producto:', req.body)
             //guardar el usuario en la db
             let newproduct = {
-                imagen: req.body.imagen,
+                imagen: '/images/products/'+req.body.imagen,
                 producto: req.body.producto,
                 descripcion: req.body.descripcion,
                 id_usuario: id_usuario // Guardar ID del usuario en el producto
@@ -240,7 +241,8 @@ showEdit: function(req, res){ // mostrar el formulario de edicion
 },
 edit: function (req, res) { // actualizar el producto
     const idProducto = req.params.id;
-    
+
+    console.log('producto editado: ', req.body);
 
     let productoEditado = {
         imagen: req.body.imagen,

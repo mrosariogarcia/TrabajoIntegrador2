@@ -16,8 +16,8 @@ router.post("/logout", usersController.logout);
 router.get("/profile/:id", usersController.detail);
 
 
-router.get("/edit", usersController.edit);
-router.post("/edit", editValidation ,usersController.update);
+router.get("/edit/:id", usersController.edit);
+router.post("/edit/:id", editValidation ,usersController.update);
 
 
 module.exports = router;
