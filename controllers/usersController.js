@@ -192,10 +192,10 @@ let usersController = {
             {
                 email: req.body.email, 
                 usuario: req.body.usuario, 
-                contrasena: req.body.contrasena, 
+                contrasena: bcrypt.hashSync(req.body.contrasena, 10), 
                 fechaDeNacimiento: req.body.fechaDeNacimiento, 
                 dni: req.body.dni, 
-                fotoDePerfil: req.body.fotoDePerfil,
+                fotoDePerfil: "/images/users/"+req.body.fotoDePerfil,
                 recordarme: req.body.recordarme,
                 updatedAt: new Date() // Actualiza la columna updatedAt con la fecha actual
             },
