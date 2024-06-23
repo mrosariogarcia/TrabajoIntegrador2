@@ -229,6 +229,10 @@ showEdit: function(req, res){ // mostrar el formulario de edicion
 
 },
 edit: function (req, res) { // actualizar el producto
+    
+    const errors = validationResult(req);
+    if (errors.isEmpty()) { 
+    
     const id_producto = req.params.id;
 
     db.Product.update(
@@ -247,6 +251,14 @@ edit: function (req, res) { // actualizar el producto
         console.log('error: ', error);
         res.status(500).send('Error en el servidor')
     })
+
+
+}
+
+else{
+    console.log('Errores de validación:', errors.mapped());
+    return res.render('add', { errors: errors.mapped(), OldProduct: req.body });
+}
 
     // db.Product.update(
     //     {

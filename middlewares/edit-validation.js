@@ -24,9 +24,13 @@ const editValidations = [
         .notEmpty().withMessage("Es un campo obligatorio, debes completar tu nombre"),
 
     body("contrasena")
-        .notEmpty().withMessage("Es un campo obligatorio, debes completar una constrasena")
-        .isLength({ min: 4 }).withMessage('La contraseña debe tener al menos 4 caracteres')
-            
+    .custom(function(value, {req}){
+        if(value && value.length < 4){
+            throw new Error('La contraseña debe tener al menos 4 caracteres');
+        }
+        // si no hay nada en la contrasena permite que siga con la anterior
+        return true;
+    })   
 ]
 
 module.exports = editValidations;

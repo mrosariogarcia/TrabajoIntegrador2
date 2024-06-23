@@ -12,10 +12,13 @@
     <!-- product detail -->
     <div class="container products-wrapper">
         <div class="d-flex align-items-center">
+        
             <% if (locals.user) { %>
-                <p class="product-detail-description editar">
-                    <a href="/product/product-edit/<%= resultado.id_producto %>">Editar</a>
-                </p>
+                <% if (locals.user.id_usuario === resultado.id_usuario) { %> 
+                    <p class="product-detail-description editar">
+                        <a href="/product/product-edit/<%= resultado.id_producto %>">Editar</a>
+                     </p>
+                <% } %>
             <% } %>
         </div>
         <br>
