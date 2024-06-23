@@ -145,7 +145,6 @@ let usersController = {
     },
     
     edit: function (req, res) {
-        // LO DE TRINI
         const idUsuario = req.params.id;
 
         db.User.findByPk(idUsuario)
@@ -161,31 +160,9 @@ let usersController = {
             res.status(500).send('Error en el servidor')
         })
 
-
-        // // LO QUE TENIA ROCHI
-        // if (req.session.user != undefined) { 
-        //     let idEditar = req.session.user.id_usuario;
-        //     console.log(idEditar)
-
-        //     // VERIFICAR QUE SOLO EL USUARIO PUEDA EDITAR
-        //     db.User.findByPk(idEditar)
-        //     .then(function(usuarioE){
-        //         return res.render('edit', {
-        //             title: 'Profile Edit', 
-        //             usuario: usuarioE});
-        //     })
-        //     .catch(function(error){
-        //         console.log(error);
-        //     });    
-        // }
-        // else {
-        //     return res.redirect("/users/login");
-        // }
-
     },
 
     update:function (req, res) {
-        // LO DE TRINI
         const idUsuario = req.params.id;
 
         db.User.update(
@@ -209,37 +186,6 @@ let usersController = {
             res.statys(500).send('Error en el servidor');
         })
         
-        
-
-        // // LO QUE TENIA ROCHI
-        // let errorsEdit = validationResult(req); 
-
-        // if (errorsEdit.isEmpty()) {
-
-        //     let filtrado = {
-        //         where: {
-        //         id: req.session.user.id
-        //         }
-        //     } 
-
-        //     let usuarioEdit = {
-        //         email: form.email,
-        //         usuario: form.usuario,
-        //         contrasena: bcrypt.hashSync(form.contrasena, 10),
-        //         fechaDeNacimiento: form.fechaDeNacimiento,
-        //         dni: form.dni,
-        //         fotoDePerfil: form.fotoDePerfil
-        //     }
-    
-        //     db.Usuario.update(usuarioEdit, filtrado)
-        //     .then((result) => {
-        //         return res.redirect("/users/login")
-        //     })
-        //     .catch((err) => {
-        //         return console.log(err);
-        //     });       
-        // } 
-
     }
 
 };

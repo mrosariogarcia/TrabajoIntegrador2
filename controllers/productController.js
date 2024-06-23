@@ -161,28 +161,19 @@ let productController = {
     
         const errors = validationResult(req);
         if (errors.isEmpty()) {
-        
-            //console.log("Usuario en session", req.session)
             let id_usuario = req.session.user.id_usuario
             //console.log(id_usuario)
-
-            //console.log('Datos del producto:', req.body)
-            //guardar el usuario en la db
             let newproduct = {
                 imagen: '/images/products/'+req.body.imagen,
                 producto: req.body.producto,
                 descripcion: req.body.descripcion,
                 id_usuario: id_usuario // Guardar ID del usuario en el producto
             }
-
-            console.log('Producto a crear:', newproduct)
-
-
+            // console.log('Producto a crear:', newproduct)
             db.Product.create(newproduct)
                 .then(function(newproduct){
-                    console.log(newproduct)
-                    idP = newproduct.id_producto
-                    return res.redirect('detalle/' + idP)
+                    id_producto = newproduct.id_producto
+                    return res.redirect('/product/detalle/' + id_producto)
                 })
                 .catch(function(error){
                     console.log(error)
@@ -191,9 +182,7 @@ let productController = {
 
         else{
             console.log('Errores de validación:', errors.mapped());
-            return res.render('store', {
-                 errors: errors.mapped(), 
-                 OldProduct: req.body });
+            return res.render('add', { errors: errors.mapped(), OldProduct: req.body });
         }
         
 },
