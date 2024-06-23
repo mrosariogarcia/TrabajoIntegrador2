@@ -13,6 +13,7 @@ router.post('/add', productController.store);
 router.post('/comentario/:id',comentarioValidations,productController.comentario);
 router.post('/borrar/:id',productController.borrar);
 
-router.get('/product-edit', productController.edit);
+router.get('/product-edit/:id', productController.showEdit);
+router.post('/product-edit/:id', productController.edit);
 
 module.exports = router;

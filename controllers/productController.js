@@ -222,41 +222,78 @@ let productController = {
             console.log(error);
         });
 },
-edit: function (req, res) {
-    const resultValidation = validationResult(req);
-    let id_del_producto = req.params.id
+showEdit: function(req, res){ // mostrar el formulario de edicion
+    const idProducto = req.params.id;
 
-    if(!resultValidation.isEmpty()){
-        console.log('resultValidation: ', JSON.stringify(resultValidation, null, 4));
-
-        return db.Products.findByPk(id_del_producto)
-            .then(function(prod){
-                res.render('product-edit', {
-                    prod: prod,
-                    errors: resultValidation.mapped(),
-                    oldData: req.body
-                });
-            })
-            .catch(function(error){
-                console.log(error);
-            })
-    }
-    else{
-        let editar = {
-            imagen: req.body.imagen,
-            nomProducto: req.body.producto,
-            descripcionProducto: req.body.descripcion
+    db.Product.findByPk(idProducto)
+    .then(function(prod){
+        if(!prod){
+            return res.status(404).send('Producto no encontrado');
         }
-        db.Product.update(editar, {
-            where: {idProducto: id_del_producto}
-        })
-            .then(function(data){
-                res.redirect('/product/product-edit');
-            }) 
-            .catch(function(error){
-                console.log(error);
-            })
+        res.render('product-edit', {producto: prod});
+    })
+    .catch(function(error){
+        console.log('error: ', error);
+        res.status(500).send('Error en el servidor');
+    })
+
+},
+edit: function (req, res) { // actualizar el producto
+    const idProducto = req.params.id;
+    
+
+    let productoEditado = {
+        imagen: req.body.imagen,
+        producto: req.body.producto,
+        descripcion: req.body.descripcion
     }
+
+    // db.Product.update(
+    //     {
+            
+    //     },
+    //     {
+    //         where: {
+    //             id: idProducto
+    //         }
+    //     }
+    // )
+
+
+    // const resultValidation = validationResult(req);
+    // let id_del_producto = req.params.id
+
+    // if(!resultValidation.isEmpty()){
+    //     console.log('resultValidation: ', JSON.stringify(resultValidation, null, 4));
+
+    //     return db.Products.findByPk(id_del_producto)
+    //         .then(function(prod){
+    //             res.render('product-edit', {
+    //                 prod: prod,
+    //                 errors: resultValidation.mapped(),
+    //                 oldData: req.body
+    //             });
+    //         })
+    //         .catch(function(error){
+    //             console.log(error);
+    //         })
+    // }
+    // else{
+    //     let editar = {
+    //         imagen: req.body.imagen,
+    //         nomProducto: req.body.producto,
+    //         descripcionProducto: req.body.descripcion
+    //     }
+    //     db.Product.update(editar, {
+    //         where: {idProducto: id_del_producto}
+    //     })
+    //         .then(function(data){
+    //             res.redirect('/product/product-edit');
+    //         }) 
+    //         .catch(function(error){
+    //             console.log(error);
+    //         })
+    // }
 }
 
 //     let id = req.params.id;
