@@ -145,6 +145,7 @@ let usersController = {
     },
     
     edit: function (req, res) {
+        // LO DE TRINI
         const idUsuario = req.params.id;
 
         db.User.findByPk(idUsuario)
@@ -159,7 +160,10 @@ let usersController = {
             console.log('error: ', error);
             res.status(500).send('Error en el servidor')
         })
-        // if (req.session.user != undefined) { // lo que tenia rochi
+
+
+        // // LO QUE TENIA ROCHI
+        // if (req.session.user != undefined) { 
         //     let idEditar = req.session.user.id_usuario;
         //     console.log(idEditar)
 
@@ -181,6 +185,7 @@ let usersController = {
     },
 
     update:function (req, res) {
+        // LO DE TRINI
         const idUsuario = req.params.id;
 
         db.User.update(
@@ -197,44 +202,43 @@ let usersController = {
             {where: {id_usuario: idUsuario}}
         )
         .then(function(){
-            res.redirect(`/users/profile/${idUsuario}`)
+            res.redirect('/users/login')
         })
         .catch(function(error){
             console.log('error: ', error);
             res.statys(500).send('Error en el servidor');
         })
         
-        // const {producto, descripcion, imagen} = req.body;
+        
 
+        // // LO QUE TENIA ROCHI
+        // let errorsEdit = validationResult(req); 
 
+        // if (errorsEdit.isEmpty()) {
 
-    //     let errorsEdit = validationResult(req); // lo que tenia rochi
+        //     let filtrado = {
+        //         where: {
+        //         id: req.session.user.id
+        //         }
+        //     } 
 
-    //     if (errorsEdit.isEmpty()) {
-
-    //         let filtrado = {
-    //             where: {
-    //             id: req.session.user.id
-    //             }
-    //         } 
-
-    //         let usuarioEdit = {
-    //             email: form.email,
-    //             usuario: form.usuario,
-    //             contrasena: bcrypt.hashSync(form.contrasena, 10),
-    //             fechaDeNacimiento: form.fechaDeNacimiento,
-    //             dni: form.dni,
-    //             fotoDePerfil: form.fotoDePerfil
-    //         }
+        //     let usuarioEdit = {
+        //         email: form.email,
+        //         usuario: form.usuario,
+        //         contrasena: bcrypt.hashSync(form.contrasena, 10),
+        //         fechaDeNacimiento: form.fechaDeNacimiento,
+        //         dni: form.dni,
+        //         fotoDePerfil: form.fotoDePerfil
+        //     }
     
-    //         db.Usuario.update(usuarioEdit, filtrado)
-    //         .then((result) => {
-    //             return res.redirect("/users/login")
-    //         })
-    //         .catch((err) => {
-    //             return console.log(err);
-    //         });       
-    //     } 
+        //     db.Usuario.update(usuarioEdit, filtrado)
+        //     .then((result) => {
+        //         return res.redirect("/users/login")
+        //     })
+        //     .catch((err) => {
+        //         return console.log(err);
+        //     });       
+        // } 
 
     }
 

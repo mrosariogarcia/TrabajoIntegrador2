@@ -25,37 +25,30 @@
 									<p class="feedback"><%= errors.email.msg %></p>
 								  <% } %>
 
-								<label>NOMBRE DE USUARIO </label><input type="text" name="usuario"
-									placeholder="USUARIO"  value="<%= locals.old !== undefined && old.usuario ? old.usuario : "" %>" ><br><br>
+								<label>NOMBRE DE USUARIO </label><input type="text" name="usuario" placeholder="USUARIO"  value="<%= locals.old !== undefined && old.usuario ? old.usuario : "" %>" ><br><br>
 									<% if (locals.errors && errors.usuario) { %>
 										<p class="feedback"><%= errors.usuario.msg %></p>
 									  <% } %>	
 
-								<label>CONTRASEÑA </label><input type="password" name="contrasena"
-									placeholder="CONTRASEÑA" value="<%= locals.old !== undefined && old.contrasena? old.contrasena : "" %>"><br><br>
+								<label>CONTRASEÑA </label><input type="password" name="contrasena" placeholder="CONTRASEÑA" value="<%= locals.old !== undefined && old.contrasena? old.contrasena : "" %>"><br><br>
 									<% if (locals.errors && errors.contrasena) { %>
 										<p class="feedback"><%= errors.contrasena.msg %></p>
 									  <% } %>
 									
-								<label>FECHA DE NACIMIENTO </label><input type="date" name="fechaDeNacimiento"
-									placeholder="FECHA NACIMIENTO" ><br><br>
+								<label>FECHA DE NACIMIENTO </label><input type="date" name="fechaDeNacimiento" placeholder="FECHA NACIMIENTO" ><br><br>
 									<% if (locals.errors && errors.fechaDeNacimiento) { %>
 										<p class="feedback"><%= errors.fechaDeNacimiento.msg %></p>
 									  <% } %>
 									
-								<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni"
-									placeholder="NRO DOCUMENTO" >
-								<br><br>
+								<label>NUMERO DE DOCUMENTO </label><input type="number" name="dni" placeholder="NRO DOCUMENTO" ><br><br>
+									<% if (locals.errors && errors.dni) { %>
+										<p class="feedback"><%= errors.dni %></p>
+									<% } %>
 								
-								<% if (locals.errors && errors.dni) { %>
-									<p class="feedback"><%= errors.dni %></p>
-								  <% } %>
-								
-								<label>FOTO DE PERFIL </label><input type="file" name="fotoDePerfil"
-									placeholder="FOTO DE PERFIL" ><br><br>
+								<label>FOTO DE PERFIL </label><input type="file" name="fotoDePerfil" placeholder="FOTO DE PERFIL" ><br><br>
 									<% if (locals.errors && errors.fotoDePerfil) { %>
 										<p class="feedback"><%= errors.fotoDePerfil %></p>
-									  <% } %>
+									<% } %>
 									
 								<button type="submit"> REGISTRARME </button><br><br>
 							</form>
