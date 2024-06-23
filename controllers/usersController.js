@@ -183,7 +183,7 @@ let usersController = {
         })
         .catch(function(error){
             console.log('error: ', error);
-            res.statys(500).send('Error en el servidor');
+            res.status(500).send('Error en el servidor');
         })
         
     }

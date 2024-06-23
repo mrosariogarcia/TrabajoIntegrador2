@@ -216,11 +216,11 @@ showEdit: function(req, res){ // mostrar el formulario de edicion
     const idProducto = req.params.id;
 
     db.Product.findByPk(idProducto)
-    .then(function(prod){
-        if(!prod){
+    .then(function(producto){
+        if(!producto){
             return res.status(404).send('Producto no encontrado');
         }
-        res.render('product-edit', {producto: prod});
+        res.render('product-edit', {producto: producto});
     })
     .catch(function(error){
         console.log('error: ', error);
@@ -229,15 +229,24 @@ showEdit: function(req, res){ // mostrar el formulario de edicion
 
 },
 edit: function (req, res) { // actualizar el producto
-    const idProducto = req.params.id;
+    const id_producto = req.params.id;
 
-    console.log('producto editado: ', req.body);
-
-    let productoEditado = {
-        imagen: req.body.imagen,
-        producto: req.body.producto,
-        descripcion: req.body.descripcion
-    }
+    db.Product.update(
+        {
+            imagen: '/images/products/'+req.body.imagen,
+            producto: req.body.producto,
+            descripcion: req.body.descripcion,
+            updatedAt: new Date() // Actualiza la columna updatedAt con la fecha actual
+        },
+        {where: {id_producto: id_producto}}
+    )
+    .then(function(){
+        res.redirect('/product/detalle/'+id_producto)
+    })
+    .catch(function(error){
+        console.log('error: ', error);
+        res.status(500).send('Error en el servidor')
+    })
 
     // db.Product.update(
     //     {
