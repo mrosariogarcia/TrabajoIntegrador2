@@ -134,7 +134,9 @@ let productController = {
 },      
     store: function (req, res) {
         //console.log('Solicitud recibida para registrar producto');
-    
+    if (req.session.user != undefined){
+        return res.redirect('/')
+    }else{
         const errors = validationResult(req);
         if (errors.isEmpty()) {
             let id_usuario = req.session.user.id_usuario
@@ -160,6 +162,7 @@ let productController = {
             console.log('Errores de validación:', errors.mapped());
             return res.render('add', { errors: errors.mapped(), OldProduct: req.body });
         }
+    }
         
 },
     borrar: function (req, res) {
