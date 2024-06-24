@@ -25,12 +25,16 @@ const editValidations = [
 
     body("contrasena")
     .custom(function(value, {req}){
-        if(value && value.length < 4){
-            throw new Error('La contraseña debe tener al menos 4 caracteres');
+        if(value == ""){
+            return true
         }
-        // si no hay nada en la contrasena permite que siga con la anterior
-        return true;
-    })   
+        else if(value.length < 4){
+            throw new Error ('La contraseña debe tener al menos 4 caracteres')
+        }
+        else{
+            return true
+        }
+    })
 ]
 
 module.exports = editValidations;
