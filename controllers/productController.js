@@ -77,31 +77,7 @@ let productController = {
                 console.log('error: ', error);
                 return res.status(500).send('Error en el servidor')
             })
-
-
-        // // como tenia antes
-        // db.Product.findByPk(id, {
-        //     // agregamos includes de generos y actores
-        //     include: [
-        //         { association: 'usuario' },
-        //         { 
-        //             association: 'comentarios', 
-        //             include: [{ association: 'user' }], 
-        //             order: [['createdAt', 'DESC']] // Ordenar comentarios por fecha de creación descendente
-        //         },
-        //     ], 
-        //     // order: [[{model: db.Comentarios, as: 'comentarios'}, 'createdAt', 'DESC']]
-        // })
-        //     .then(data => {
-                
-        //         //console.log("data: ", JSON.stringify(data, null, 4));
-        //         //console.log("coments: ", JSON.stringify(data.comentarios, null, 4));
-        //         console.log('data: ', data);
-        //         return res.render('product', { resultado: data, comentarios: data.comentarios, oldData: req.body, errores: {} });
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     })
+       
 },
     comentario: function(req, res) {
     // Verificar si el usuario está autenticado
@@ -260,75 +236,7 @@ else{
     return res.render('add', { errors: errors.mapped(), OldProduct: req.body });
 }
 
-    // db.Product.update(
-    //     {
-            
-    //     },
-    //     {
-    //         where: {
-    //             id: idProducto
-    //         }
-    //     }
-    // )
-
-
-    // const resultValidation = validationResult(req);
-    // let id_del_producto = req.params.id
-
-    // if(!resultValidation.isEmpty()){
-    //     console.log('resultValidation: ', JSON.stringify(resultValidation, null, 4));
-
-    //     return db.Products.findByPk(id_del_producto)
-    //         .then(function(prod){
-    //             res.render('product-edit', {
-    //                 prod: prod,
-    //                 errors: resultValidation.mapped(),
-    //                 oldData: req.body
-    //             });
-    //         })
-    //         .catch(function(error){
-    //             console.log(error);
-    //         })
-    // }
-    // else{
-    //     let editar = {
-    //         imagen: req.body.imagen,
-    //         nomProducto: req.body.producto,
-    //         descripcionProducto: req.body.descripcion
-    //     }
-    //     db.Product.update(editar, {
-    //         where: {idProducto: id_del_producto}
-    //     })
-    //         .then(function(data){
-    //             res.redirect('/product/product-edit');
-    //         }) 
-    //         .catch(function(error){
-    //             console.log(error);
-    //         })
-    // }
 }
-
-//     let id = req.params.id;
-//     let filtro = {
-//         include: [
-//             {association: usuario}
-//         ]
-//     };
-//     //VERIFICAR QUE SOLO EL USUARIO PUEDE EDITAR LOS PRODUCTOS QUE SUBE
-//     db.Product.findByPk(id, filtro)
-//         .then(function(rta){
-//             if(!rta){
-//                 return res.status(404).send('Producto no encontrado en edit')
-//             }
-//             res.render('product-edit', {
-//                 producto: rta
-//             })
-//         })
-//         .catch(function(error){
-//             console.log(error);
-//             res.status(500).send('Error en el servidor en edit')
-//         })
-// }
 
 }
 
