@@ -24,12 +24,13 @@ const editValidations = [
         .notEmpty().withMessage("Es un campo obligatorio, debes completar tu nombre"),
 
     body("contrasena")
-    .custom(function(value, {req}){
-        if(value && value.length < 4){
-            throw new Error('La contraseña debe tener al menos 4 caracteres');
-        }
+        .notEmpty().withMessage("Es un campo obligatorio, debes completar tu contrasena")
+        .custom(function(value, {req}){
+            if(value && value.length < 4){
+                throw new Error('La contraseña debe tener al menos 4 caracteres');
+            }
         // si no hay nada en la contrasena permite que siga con la anterior
-        return true;
+            return true;
     })   
 ]
 
